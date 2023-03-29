@@ -13,16 +13,14 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
--- Set completeopt to have a better completion experience
---vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.autowriteall = true
 vim.o.timeout = true
 vim.o.timeoutlen = 300
--- vim.o.guicursor = ''
 vim.o.scrolloff = 4
+vim.o.updatetime = 250
 
 ---------------------------------------
 -- Plugins
@@ -49,6 +47,13 @@ require("lazy").setup({
 	{'nvim-tree/nvim-tree.lua'},
 	{'lewis6991/gitsigns.nvim'},
 	{'nvim-telescope/telescope.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
+	{'rmagatti/auto-session'},
+	{'rmagatti/session-lens', dependencies = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'}},
+	{'folke/which-key.nvim'},
+	{'tpope/vim-sleuth'},
+	{'tiagovla/scope.nvim'},
+	{'ray-x/lsp_signature.nvim'},
+	{'akinsho/toggleterm.nvim', version = '*', config = true},
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make',
@@ -56,9 +61,6 @@ require("lazy").setup({
 			return vim.fn.executable 'make' == 1
 		end,
 	},
-	{'rmagatti/auto-session'},
-	{'rmagatti/session-lens', dependencies = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'}},
-	{'akinsho/toggleterm.nvim', version = '*', config = true},
 	{
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = {
@@ -68,28 +70,35 @@ require("lazy").setup({
 			pcall(require('nvim-treesitter.install').update { with_sync = true })
 		end,
 	},
-	{'folke/which-key.nvim'},
-	{'tpope/vim-sleuth'},
-	-- {'VonHeikemen/lsp-zero.nvim', dependencies = {
-	-- 	-- LSP Support
-	-- 	{'neovim/nvim-lspconfig'},             -- Required
-	-- 	{'williamboman/mason.nvim'},           -- Optional
-	-- 	{'williamboman/mason-lspconfig.nvim'}, -- Optional
-	--
-	-- 	-- Autocompletion
-	-- 	{'hrsh7th/nvim-cmp'},         -- Required
-	-- 	{'hrsh7th/cmp-nvim-lsp'},     -- Required
-	-- 	{'hrsh7th/cmp-buffer'},       -- Optional
-	-- 	{'hrsh7th/cmp-path'},         -- Optional
-	-- 	{'saadparwaiz1/cmp_luasnip'}, -- Optional
-	-- 	{'hrsh7th/cmp-nvim-lua'},     -- Optional
-	--
-	-- 	-- Snippets
-	-- 	{'L3MON4D3/LuaSnip'},             -- Required
-	-- 	{'rafamadriz/friendly-snippets'}, -- Optional
- --    }},
+	{
+		'VonHeikemen/lsp-zero.nvim', dependencies = {
+		-- LSP Support
+		{'neovim/nvim-lspconfig'},             -- Required
+		{'williamboman/mason.nvim'},           -- Optional
+		{'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+		-- Autocompletion
+		{'hrsh7th/nvim-cmp'},         -- Required
+		{'hrsh7th/cmp-nvim-lsp'},     -- Required
+		{'hrsh7th/cmp-buffer'},       -- Optional
+		{'hrsh7th/cmp-path'},         -- Optional
+		{'saadparwaiz1/cmp_luasnip'}, -- Optional
+		{'hrsh7th/cmp-nvim-lua'},     -- Optional
+
+		-- Snippets
+		{'L3MON4D3/LuaSnip'},             -- Required
+		{'rafamadriz/friendly-snippets'}, -- Optional
+    }},
 })
 
+require('Comment').setup()
+require('indent_blankline').setup()
+require('nvim-tree').setup()
+require('gitsigns').setup()
+require('toggleterm').setup()
+require('which-key').setup()
+require('scope').setup()
+require('lsp_signature').setup()
 require('lualine').setup({
 	options = {
 		component_separators = '|',
@@ -97,8 +106,6 @@ require('lualine').setup({
 	},
 	sections = {lualine_c = {require('auto-session-library').current_session_name}},
 })
-require('Comment').setup()
-require('indent_blankline').setup()
 require('bufferline').setup({
 	options = {
 		offsets = {
@@ -111,9 +118,6 @@ require('bufferline').setup({
 		}
 	}
 })
-require('nvim-tree').setup()
-require('gitsigns').setup()
-require('nvim-web-devicons').setup()
 require('auto-session').setup({
 	log_level = 'none',
 })
@@ -197,7 +201,39 @@ require('nvim-treesitter.configs').setup({
     },
   },
 })
-require('toggleterm').setup()
+
+local lsp = require('lsp-zero').preset({
+  name = 'recommended',
+})
+-- lsp.ensure_installed({
+--     'autopep8',
+--     'clang-format',
+--     'clangd',
+--     'cmakelang',
+--     'cpplint',
+--     'lua-language-server',
+--     'marksman',
+--     'pydocstyle',
+--     'pylint',
+--     'python-lsp-server',
+--     'selene',
+--     'stylua',
+-- })
+-- (Optional) Configure lua language server for neovim
+lsp.on_attach(function(client, bufnr)
+  local opts = {desc = '[F]ormat buffer', buffer = bufnr}
+
+  vim.keymap.set({'n', 'x'}, '<leader>f', function()
+    vim.lsp.buf.format({async = false, timeout_ms = 10000})
+  end, opts)
+end)
+lsp.nvim_workspace()
+lsp.setup()
+vim.diagnostic.config({
+  virtual_text = true,
+  update_in_insert = true,
+  float = true,
+})
 
 ---------------------------------------
 -- Autocommands
@@ -216,6 +252,8 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
   end,
 })
 
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
 ---------------------------------------
 -- Keybindings
 ---------------------------------------
@@ -224,6 +262,11 @@ vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', {desc = 'Save'})
 
 vim.keymap.set('n', '<C-_>', 'gcc', {desc = 'Toggle line comment', remap = true})
 vim.keymap.set('v', '<C-_>', 'gc', {desc = 'Toggle line comment', remap = true})
+
+vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', {desc = '[T]oggle terminal'})
+
+vim.keymap.set('n', '<leader>]', ':bnext<CR>', {desc = 'Next tab'})
+vim.keymap.set('n', '<leader>[', ':bprev<CR>', {desc = 'Previous tab'})
 
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -240,8 +283,6 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>ss', require('session-lens').search_session, { desc = '[S]earch [S]essions' })
-
-vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', {desc = '[T]oggle terminal'})
 
 ---------------------------------------
 -- Color Scheme
