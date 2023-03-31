@@ -93,12 +93,30 @@ require("lazy").setup({
 
 require('Comment').setup()
 require('indent_blankline').setup()
-require('nvim-tree').setup()
 require('gitsigns').setup()
 require('toggleterm').setup()
 require('which-key').setup()
 require('scope').setup()
 require('lsp_signature').setup()
+require('nvim-tree').setup({
+  git = {
+    ignore = false,
+  },
+  renderer = {
+    highlight_modified = "name",
+    highlight_git = true,
+  },
+  modified = {
+    enable = true,
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
+    severity = {
+      min = vim.diagnostic.severity.ERROR,
+    },
+  },
+})
 require('lualine').setup({
 	options = {
 		component_separators = '|',
@@ -220,7 +238,7 @@ local lsp = require('lsp-zero').preset({
 --     'stylua',
 -- })
 -- (Optional) Configure lua language server for neovim
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(user, bufnr)
   local opts = {desc = '[F]ormat buffer', buffer = bufnr}
 
   vim.keymap.set({'n', 'x'}, '<leader>f', function()
