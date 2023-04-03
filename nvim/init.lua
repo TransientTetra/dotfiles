@@ -52,6 +52,7 @@ require("lazy").setup({
 	{ 'folke/which-key.nvim' },
 	{ 'tpope/vim-sleuth' },
 	{ 'tiagovla/scope.nvim' },
+	{ 'folke/trouble.nvim',                 dependencies = { 'kyazdani42/nvim-web-devicons' } },
 	{ 'ray-x/lsp_signature.nvim' },
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
@@ -309,8 +310,8 @@ vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', { desc = 'Save' })
 vim.keymap.set('n', '<C-_>', 'gcc', { desc = 'Toggle line comment', remap = true })
 vim.keymap.set('v', '<C-_>', 'gc', { desc = 'Toggle line comment', remap = true })
 
-vim.keymap.set('n', '<leader>]', ':bnext<CR>', { desc = 'Next tab' })
-vim.keymap.set('n', '<leader>[', ':bprev<CR>', { desc = 'Previous tab' })
+vim.keymap.set('n', '<leader>]', '<cmd>bnext<CR>', { desc = 'Next tab' })
+vim.keymap.set('n', '<leader>[', '<cmd>bprev<CR>', { desc = 'Previous tab' })
 
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -327,6 +328,12 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>ss', require('session-lens').search_session, { desc = '[S]earch [S]essions' })
+vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, noremap = true })
 
 ---------------------------------------
 -- Color Scheme
