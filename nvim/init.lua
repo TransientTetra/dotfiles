@@ -53,7 +53,6 @@ require("lazy").setup({
 	{ 'tpope/vim-sleuth' },
 	{ 'tiagovla/scope.nvim' },
 	{ 'ray-x/lsp_signature.nvim' },
-	{ 'akinsho/toggleterm.nvim',            version = '*',                                                              config = true },
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make',
@@ -96,7 +95,6 @@ require("lazy").setup({
 require('Comment').setup()
 require('indent_blankline').setup()
 require('gitsigns').setup()
-require('toggleterm').setup()
 require('which-key').setup()
 require('scope').setup()
 require('lsp_signature').setup()
@@ -310,8 +308,6 @@ vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', { desc = 'Save' })
 
 vim.keymap.set('n', '<C-_>', 'gcc', { desc = 'Toggle line comment', remap = true })
 vim.keymap.set('v', '<C-_>', 'gc', { desc = 'Toggle line comment', remap = true })
-
-vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', { desc = '[T]oggle terminal' })
 
 vim.keymap.set('n', '<leader>]', ':bnext<CR>', { desc = 'Next tab' })
 vim.keymap.set('n', '<leader>[', ':bprev<CR>', { desc = 'Previous tab' })
