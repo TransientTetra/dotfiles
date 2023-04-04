@@ -54,6 +54,8 @@ require("lazy").setup({
 	{ 'tiagovla/scope.nvim' },
 	{ 'folke/trouble.nvim',                 dependencies = { 'kyazdani42/nvim-web-devicons' } },
 	{ 'ray-x/lsp_signature.nvim' },
+	{ 'tpope/vim-fugitive' },
+	{ 'tpope/vim-rhubarb',                  dependencies = { 'tpope/vim-fugitive' } },
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make',
