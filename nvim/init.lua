@@ -300,6 +300,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
 })
 
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.cmd [[autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE]]
 
 ---------------------------------------
 -- Keybindings
