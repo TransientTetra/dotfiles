@@ -56,6 +56,9 @@ require("lazy").setup({
 	{ 'ray-x/lsp_signature.nvim' },
 	{ 'tpope/vim-fugitive' },
 	{ 'tpope/vim-rhubarb',                  dependencies = { 'tpope/vim-fugitive' } },
+	{ 'rcarriga/nvim-notify' },
+	{ 'stevearc/dressing.nvim' },
+	{ 'stevearc/overseer.nvim' },
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make',
@@ -101,6 +104,9 @@ require('gitsigns').setup()
 require('which-key').setup()
 require('scope').setup()
 require('lsp_signature').setup()
+require('dressing').setup()
+require('overseer').setup()
+vim.notify = require('notify')
 require('nvim-tree').setup({
 	git = {
 		ignore = false,
@@ -280,7 +286,7 @@ lsp.nvim_workspace()
 lsp.setup()
 vim.diagnostic.config({
 	virtual_text = true,
-	update_in_insert = true,
+	update_in_insert = false,
 	float = true,
 })
 
@@ -307,15 +313,30 @@ vim.cmd [[autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE]]
 ---------------------------------------
 -- Keybindings
 ---------------------------------------
+-- Personal
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', { desc = 'Save' })
-
-vim.keymap.set('n', '<C-_>', 'gcc', { desc = 'Toggle line comment', remap = true })
-vim.keymap.set('v', '<C-_>', 'gc', { desc = 'Toggle line comment', remap = true })
-
 vim.keymap.set('n', '<leader>]', '<cmd>bnext<CR>', { desc = 'Next tab' })
 vim.keymap.set('n', '<leader>[', '<cmd>bprev<CR>', { desc = 'Previous tab' })
+vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<CR>', { desc = 'Build tasks' })
+vim.keymap.set('n', '<leader>ss', require('session-lens').search_session, { desc = '[S]earch [S]essions' })
+-- Autocomplete braces
+vim.keymap.set('i', '(', '()<left>')
+vim.keymap.set('i', '[', '[]<left>')
+vim.keymap.set('i', '{', '{}<left>')
+vim.keymap.set('i', '{<CR>', '{<CR>}<ESC>O')
+vim.keymap.set('i', '{;<CR>', '{<CR>};<ESC>O')
+-- vim.keymap.set('i', <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+-- vim.keymap.set('i', <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+-- vim.keymap.set('i', <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+-- vim.keymap.set('i', <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+-- vim.keymap.set('i', <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
+-- Comment
+vim.keymap.set('n', '<C-_>', 'gcc', { desc = 'Toggle line comment' })
+vim.keymap.set('v', '<C-_>', 'gc', { desc = 'Toggle line comment' })
+
+-- Telescope
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
@@ -330,7 +351,8 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>ss', require('session-lens').search_session, { desc = '[S]earch [S]essions' })
+
+-- TroubleToggle
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true, noremap = true })
