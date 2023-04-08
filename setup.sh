@@ -42,6 +42,9 @@ pip install pynvim
 npm i -g neovim
 chsh -s /usr/bin/zsh
 
+mkdir -p ~/.cache/zsh
+touch ~/.cache/zsh/history
+
 mkdir -p ~/Projects
 git clone --recurse-submodules https://github.com/TransientTetra/dotfiles.git ~/Projects/dotfiles/
 ln -s ~/Projects/dotfiles/.vimrc ~/.vimrc
