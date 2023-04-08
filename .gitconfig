@@ -1,0 +1,17 @@
+[alias]
+	c = commit -am
+	fpush = push --force
+	s = status
+	sclone = clone --depth=1
+	rclone = clone --recurse-submodules
+	amend = commit --amend --all --no-edit
+	uncommit = reset HEAD~
+	hreset = reset --hard
+	co = checkout
+	df = diff --color --color-words --abbrev
+	cherrypick = cherry-pick
+	cp = cherry-pick
+[core]
+	editor = vim
+[protocol]
+	version = 2
