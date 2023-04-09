@@ -50,6 +50,7 @@ git clone --recurse-submodules https://github.com/TransientTetra/dotfiles.git ~/
 ln -s ~/Projects/dotfiles/.vimrc ~/.vimrc
 ln -s ~/Projects/dotfiles/.zshrc ~/.zshrc
 ln -s ~/Projects/dotfiles/.gitignore ~/.gitignore
+ln -s ~/Projects/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/Projects/dotfiles/.aliases ~/.aliases
 ln -s ~/Projects/dotfiles/nvim ~/nvim
 
