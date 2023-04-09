@@ -106,6 +106,9 @@ require('scope').setup()
 require('lsp_signature').setup()
 require('dressing').setup()
 require('overseer').setup()
+require("notify").setup({
+	background_colour = "#000000",
+})
 vim.notify = require('notify')
 require('nvim-tree').setup({
 	git = {
@@ -231,21 +234,12 @@ local lsp = require('lsp-zero').preset({
 	name = 'recommended',
 	set_lsp_keymaps = false,
 })
--- lsp.ensure_installed({
---     'autopep8',
---     'clang-format',
---     'clangd',
---     'cmakelang',
---     'cpplint',
---     'lua-language-server',
---     'marksman',
---     'pydocstyle',
---     'pylint',
---     'python-lsp-server',
---     'selene',
---     'stylua',
--- })
--- (Optional) Configure lua language server for neovim
+lsp.ensure_installed({
+	'clangd',
+	'cmake',
+	'lua_ls',
+	'pylsp',
+})
 lsp.on_attach(function(_, bufnr)
 	local opts = { desc = '[F]ormat buffer', buffer = bufnr }
 
