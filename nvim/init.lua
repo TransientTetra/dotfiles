@@ -81,8 +81,8 @@ require("lazy").setup({
 		'VonHeikemen/lsp-zero.nvim',
 		dependencies = {
 			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },    -- Required
-			{ 'williamboman/mason.nvim' },  -- Optional
+			{ 'neovim/nvim-lspconfig' }, -- Required
+			{ 'williamboman/mason.nvim' }, -- Optional
 			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
 			-- Autocompletion
@@ -94,7 +94,7 @@ require("lazy").setup({
 			{ 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
 			-- Snippets
-			{ 'L3MON4D3/LuaSnip' },    -- Required
+			{ 'L3MON4D3/LuaSnip' }, -- Required
 			{ 'rafamadriz/friendly-snippets' }, -- Optional
 		}
 	},
@@ -179,13 +179,13 @@ dashboard.section.header.val =
 -- "                        ▐             ",
 -- }
 {
-"::::    ::: :::::::::: ::::::::  :::     ::: ::::::::::: ::::    ::::  ",
-":+:+:   :+: :+:       :+:    :+: :+:     :+:     :+:     +:+:+: :+:+:+ ",
-":+:+:+  +:+ +:+       +:+    +:+ +:+     +:+     +:+     +:+ +:+:+ +:+ ",
-"+#+ +:+ +#+ +#++:++#  +#+    +:+ +#+     +:+     +#+     +#+  +:+  +#+ ",
-"+#+  +#+#+# +#+       +#+    +#+  +#+   +#+      +#+     +#+       +#+ ",
-"#+#   #+#+# #+#       #+#    #+#   #+#+#+#       #+#     #+#       #+# ",
-"###    #### ########## ########      ###     ########### ###       ### ",
+	"::::    ::: :::::::::: ::::::::  :::     ::: ::::::::::: ::::    ::::  ",
+	":+:+:   :+: :+:       :+:    :+: :+:     :+:     :+:     +:+:+: :+:+:+ ",
+	":+:+:+  +:+ +:+       +:+    +:+ +:+     +:+     +:+     +:+ +:+:+ +:+ ",
+	"+#+ +:+ +#+ +#++:++#  +#+    +:+ +#+     +:+     +#+     +#+  +:+  +#+ ",
+	"+#+  +#+#+# +#+       +#+    +#+  +#+   +#+      +#+     +#+       +#+ ",
+	"#+#   #+#+# #+#       #+#    #+#   #+#+#+#       #+#     #+#       #+# ",
+	"###    #### ########## ########      ###     ########### ###       ### ",
 }
 -- {
 -- "                                                                                         .         .           ",
@@ -201,12 +201,12 @@ dashboard.section.header.val =
 -- "8            `Yo 8 888888888888     `8888888P'           `8.`           8 8888 ,8'         `         `8.`8888. ",
 -- }
 dashboard.section.buttons.val = {
-    dashboard.button("l", "  Last Session", ""),
-    dashboard.button("s", "  Saved Sessions", ""),
+	dashboard.button("l", "  Last Session", ""),
+	dashboard.button("s", "  Saved Sessions", ""),
 	dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-    dashboard.button("f", "  Find File", ""),
-    dashboard.button("w", "  Find Word", ""),
-    dashboard.button("'", "  Bookmarks", ""),
+	dashboard.button("f", "  Find File", ""),
+	dashboard.button("w", "  Find Word", ""),
+	dashboard.button("'", "  Bookmarks", ""),
 	dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
 }
 alpha.setup(dashboard.config)
