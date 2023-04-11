@@ -60,6 +60,7 @@ require("lazy").setup({
 	{ 'stevearc/dressing.nvim' },
 	{ 'stevearc/overseer.nvim' },
 	{ 'goolord/alpha-nvim' },
+	{ 'windwp/nvim-autopairs' },
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make',
@@ -107,6 +108,7 @@ require('scope').setup()
 require('lsp_signature').setup()
 require('dressing').setup()
 require('overseer').setup()
+require('nvim-autopairs').setup()
 local alpha = require('alpha')
 local dashboard = require('alpha.themes.dashboard')
 dashboard.section.header.val =
@@ -422,17 +424,6 @@ vim.keymap.set('n', '<leader>ls', function()
 	local path = require('auto-session').get_latest_session():gsub("\\%%", "%%")
 	require('auto-session').RestoreSession(path)
 end, { desc = '[L]ast [S]ession' })
--- Autocomplete braces
-vim.keymap.set('i', '(', '()<left>')
-vim.keymap.set('i', '[', '[]<left>')
-vim.keymap.set('i', '{', '{}<left>')
-vim.keymap.set('i', '{<CR>', '{<CR>}<ESC>O')
-vim.keymap.set('i', '{;<CR>', '{<CR>};<ESC>O')
--- vim.keymap.set('i', <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
--- vim.keymap.set('i', <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
--- vim.keymap.set('i', <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
--- vim.keymap.set('i', <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
--- vim.keymap.set('i', <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
 -- Comment
 vim.keymap.set('n', '<C-_>', 'gcc', { desc = 'Toggle line comment' })
