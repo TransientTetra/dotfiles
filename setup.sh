@@ -1,56 +1,76 @@
 #!/bin/sh
 
-apt update && apt upgrade
+USER_=$(id -u -n)
+NPROC=$(nproc)
+LIST_OF_APPS="
+clang
+coreutils
+fdisk
+ffmpeg
+ftp
+fzf
+g++
+gcc
+gdb
+gettext
+git
+grep
+ripgrep
+gzip
+make
+neofetch
+nodejs
+npm
+p7zip
+parted
+python3
+python3-pip
+python3-venv
+python3-virtualenv
+rsync
+samba
+smbclient
+tmux
+unrar
+unzip
+vim
+w3m
+wget
+xsel
+zip
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+"
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install -y $LIST_OF_APPS
 
-apt install -y cmake
-apt install -y clang
-apt install -y fdisk
-apt install -y ffmpeg
-apt install -y ftp
-apt install -y fzf
-apt install -y g++
-apt install -y gcc
-apt install -y gdb
-apt install -y git
-apt install -y grep
-apt install -y ripgrep
-apt install -y gzip
-apt install -y make
-apt install -y neofetch
-apt install -y neovim
-apt install -y nodejs
-apt install -y npm
-apt install -y p7zip
-apt install -y parted
-apt install -y python3-pip
-apt install -y rsync
-apt install -y samba
-apt install -y smbclient
-apt install -y tmux
-apt install -y unrar
-apt install -y unzip
-apt install -y vim
-apt install -y w3m
-apt install -y wget
-apt install -y xsel
-apt install -y zip
-apt install -y zsh
-apt install -y zsh-autosuggestions
-apt install -y zsh-syntax-highlighting
+git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/Kitware/CMake.git ~/Projects/CMake
+chmod 700 ~/Projects/CMake/bootstrap
+(cd ~/Projects/CMake && ./bootstrap && make -j $NPROC -C ~/Projects/CMake && sudo make -j $NPROC -C ~/Projects/CMake install)
 
-pip install pynvim
-npm i -g neovim
-chsh -s /usr/bin/zsh
+git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/neovim/neovim.git ~/Projects/neovim
+(cd ~/Projects/neovim && make -j $NPROC CMAKE_BUILD_TYPE=Release -C ~/Projects/neovim)
+(cd ~/Projects/neovim && sudo make -j $NPROC -C ~/Projects/neovim install)
+
+python3 -m pip install pynvim
+sudo npm i -g neovim
+sudo chsh -s $(which zsh) $USER_
 
 mkdir -p ~/.cache/zsh
 touch ~/.cache/zsh/history
 
 mkdir -p ~/Projects
-git clone --recurse-submodules https://github.com/TransientTetra/dotfiles.git ~/Projects/dotfiles/
+git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/TransientTetra/dotfiles.git ~/Projects/dotfiles/
+mkdir -p ~/.config
+rm -rf ~/.vimrc
+rm -rf ~/.zshrc
+rm -rf ~/.gitconfig
+rm -rf ~/.aliases
+rm -rf ~/.config/nvim
 ln -s ~/Projects/dotfiles/.vimrc ~/.vimrc
 ln -s ~/Projects/dotfiles/.zshrc ~/.zshrc
-ln -s ~/Projects/dotfiles/.gitignore ~/.gitignore
 ln -s ~/Projects/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/Projects/dotfiles/.aliases ~/.aliases
-ln -s ~/Projects/dotfiles/nvim ~/nvim
+ln -s ~/Projects/dotfiles/nvim ~/.config/nvim
 

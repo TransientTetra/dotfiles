@@ -1,17 +1,20 @@
 #!/bin/sh
-apt update && apt upgrade
-apt install -y borgbackup
-apt install -y cmus
-apt install -y easytag
-apt install -y file-roller
-apt install -y gimp
-apt install -y gparted
-apt install -y firefox
-apt install -y thunderbird
-apt install -y telegram-desktop
-apt install -y kitty
-apt install -y lutris
-apt install -y shotwell
-apt install -y vlc
-apt install -y vorta
-apt install -y youtube-dl
+LIST_OF_APPS="
+borgbackup
+cmus
+easytag
+file-roller
+gimp
+gparted
+firefox
+thunderbird
+telegram-desktop
+kitty
+lutris
+shotwell
+vlc
+vorta
+youtube-dl
+"
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install -y $LIST_OF_APPS
