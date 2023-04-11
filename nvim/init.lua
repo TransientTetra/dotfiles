@@ -25,20 +25,20 @@ vim.o.updatetime = 250
 ---------------------------------------
 -- Plugins
 ---------------------------------------
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		'git',
+		'clone',
+		'--filter=blob:none',
+		'https://github.com/folke/lazy.nvim.git',
+		'--branch=stable', -- latest stable release
 		lazypath,
 	})
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+require('lazy').setup({
 	{ 'morhetz/gruvbox' },
 	{ 'nvim-lualine/lualine.nvim' },
 	{ 'numToStr/Comment.nvim' },
@@ -113,106 +113,106 @@ local alpha = require('alpha')
 local dashboard = require('alpha.themes.dashboard')
 dashboard.section.header.val =
 -- {
--- "███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗",
--- "████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║",
--- "██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║",
--- "██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║",
--- "██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║",
--- "╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝",
+-- '███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+-- '████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+-- '██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+-- '██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+-- '██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+-- '╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
 -- }
 -- {
--- "     .-') _   ('-.                     (`-.           _   .-')    ",
--- "    ( OO ) )_(  OO)                  _(OO  )_        ( '.( OO )_  ",
--- ",--./ ,--,'(,------. .-'),-----. ,--(_/   ,. \\ ,-.-') ,--.   ,--.)",
--- "|   \\ |  |\\ |  .---'( OO'  .-.  '\\   \\   /(__/ |  |OO)|   `.'   | ",
--- "|    \\|  | )|  |    /   |  | |  | \\   \\ /   /  |  |  \\|         | ",
--- "|  .     |/(|  '--. \\_) |  |\\|  |  \\   '   /,  |  |(_/|  |'.'|  | ",
--- "|  |\\    |  |  .--'   \\ |  | |  |   \\     /__),|  |_.'|  |   |  | ",
--- "|  | \\   |  |  `---.   `'  '-'  '    \\   /   (_|  |   |  |   |  | ",
--- "`--'  `--'  `------'     `-----'      `-'      `--'   `--'   `--' ",
+-- '     .-') _   ('-.                     (`-.           _   .-')    ',
+-- '    ( OO ) )_(  OO)                  _(OO  )_        ( '.( OO )_  ',
+-- ',--./ ,--,'(,------. .-'),-----. ,--(_/   ,. \\ ,-.-') ,--.   ,--.)',
+-- '|   \\ |  |\\ |  .---'( OO'  .-.  '\\   \\   /(__/ |  |OO)|   `.'   | ',
+-- '|    \\|  | )|  |    /   |  | |  | \\   \\ /   /  |  |  \\|         | ',
+-- '|  .     |/(|  '--. \\_) |  |\\|  |  \\   '   /,  |  |(_/|  |'.'|  | ',
+-- '|  |\\    |  |  .--'   \\ |  | |  |   \\     /__),|  |_.'|  |   |  | ',
+-- '|  | \\   |  |  `---.   `'  '-'  '    \\   /   (_|  |   |  |   |  | ',
+-- '`--'  `--'  `------'     `-----'      `-'      `--'   `--'   `--' ',
 -- }
 -- {
--- " ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓",
--- " ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒",
--- "▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░",
--- "▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ",
--- "▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒",
--- "░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░",
--- "░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░",
--- "   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ",
--- "         ░    ░  ░    ░ ░        ░   ░         ░   ",
--- "                                ░                  ",
+-- ' ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓',
+-- ' ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒',
+-- '▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░',
+-- '▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ',
+-- '▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒',
+-- '░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░',
+-- '░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░',
+-- '   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ',
+-- '         ░    ░  ░    ░ ░        ░   ░         ░   ',
+-- '                                ░                  ',
 -- }
 -- {
--- "███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄   ",
--- "███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄ ",
--- "███   ███   ███    █▀  ███    ███ ███    ███ ███▌ ███   ███   ███ ",
--- "███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███ ",
--- "███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███ ",
--- "███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███ ",
--- "███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███ ",
--- " ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  █▀    ▀█   ███   █▀  ",
+-- '███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄   ',
+-- '███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄ ',
+-- '███   ███   ███    █▀  ███    ███ ███    ███ ███▌ ███   ███   ███ ',
+-- '███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███ ',
+-- '███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███ ',
+-- '███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███ ',
+-- '███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███ ',
+-- ' ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  █▀    ▀█   ███   █▀  ',
 -- }
 -- {
--- " ▐ ▄ ▄▄▄ .       ▌ ▐·▪  • ▌ ▄ ·. ",
--- "•█▌▐█▀▄.▀·▪     ▪█·█▌██ ·██ ▐███▪",
--- "▐█▐▐▌▐▀▀▪▄ ▄█▀▄ ▐█▐█•▐█·▐█ ▌▐▌▐█·",
--- "██▐█▌▐█▄▄▌▐█▌.▐▌ ███ ▐█▌██ ██▌▐█▌",
--- "▀▀ █▪ ▀▀▀  ▀█▄▀▪. ▀  ▀▀▀▀▀  █▪▀▀▀",
+-- ' ▐ ▄ ▄▄▄ .       ▌ ▐·▪  • ▌ ▄ ·. ',
+-- '•█▌▐█▀▄.▀·▪     ▪█·█▌██ ·██ ▐███▪',
+-- '▐█▐▐▌▐▀▀▪▄ ▄█▀▄ ▐█▐█•▐█·▐█ ▌▐▌▐█·',
+-- '██▐█▌▐█▄▄▌▐█▌.▐▌ ███ ▐█▌██ ██▌▐█▌',
+-- '▀▀ █▪ ▀▀▀  ▀█▄▀▪. ▀  ▀▀▀▀▀  █▪▀▀▀',
 -- }
 -- {
--- " ▄▀▀▄ ▀▄  ▄▀▀█▄▄▄▄  ▄▀▀▀▀▄   ▄▀▀▄ ▄▀▀▄  ▄▀▀█▀▄    ▄▀▀▄ ▄▀▄ ",
--- "█  █ █ █ ▐  ▄▀   ▐ █      █ █   █    █ █   █  █  █  █ ▀  █ ",
--- "▐  █  ▀█   █▄▄▄▄▄  █      █ ▐  █    █  ▐   █  ▐  ▐  █    █ ",
--- "  █   █    █    ▌  ▀▄    ▄▀    █   ▄▀      █       █    █  ",
--- "▄▀   █    ▄▀▄▄▄▄     ▀▀▀▀       ▀▄▀     ▄▀▀▀▀▀▄  ▄▀   ▄▀   ",
--- "█    ▐    █    ▐                       █       █ █    █    ",
--- "▐         ▐                            ▐       ▐ ▐    ▐    ",
+-- ' ▄▀▀▄ ▀▄  ▄▀▀█▄▄▄▄  ▄▀▀▀▀▄   ▄▀▀▄ ▄▀▀▄  ▄▀▀█▀▄    ▄▀▀▄ ▄▀▄ ',
+-- '█  █ █ █ ▐  ▄▀   ▐ █      █ █   █    █ █   █  █  █  █ ▀  █ ',
+-- '▐  █  ▀█   █▄▄▄▄▄  █      █ ▐  █    █  ▐   █  ▐  ▐  █    █ ',
+-- '  █   █    █    ▌  ▀▄    ▄▀    █   ▄▀      █       █    █  ',
+-- '▄▀   █    ▄▀▄▄▄▄     ▀▀▀▀       ▀▄▀     ▄▀▀▀▀▀▄  ▄▀   ▄▀   ',
+-- '█    ▐    █    ▐                       █       █ █    █    ',
+-- '▐         ▐                            ▐       ▐ ▐    ▐    ',
 -- }
 -- {
--- "   ▄   ▄███▄   ████▄     ▄   ▄█ █▀▄▀█ ",
--- "    █  █▀   ▀  █   █      █  ██ █ █ █ ",
--- "██   █ ██▄▄    █   █ █     █ ██ █ ▄ █ ",
--- "█ █  █ █▄   ▄▀ ▀████  █    █ ▐█ █   █ ",
--- "█  █ █ ▀███▀           █  █   ▐    █  ",
--- "█   ██                  █▐        ▀   ",
--- "                        ▐             ",
+-- '   ▄   ▄███▄   ████▄     ▄   ▄█ █▀▄▀█ ',
+-- '    █  █▀   ▀  █   █      █  ██ █ █ █ ',
+-- '██   █ ██▄▄    █   █ █     █ ██ █ ▄ █ ',
+-- '█ █  █ █▄   ▄▀ ▀████  █    █ ▐█ █   █ ',
+-- '█  █ █ ▀███▀           █  █   ▐    █  ',
+-- '█   ██                  █▐        ▀   ',
+-- '                        ▐             ',
 -- }
 {
-	"::::    ::: :::::::::: ::::::::  :::     ::: ::::::::::: ::::    ::::  ",
-	":+:+:   :+: :+:       :+:    :+: :+:     :+:     :+:     +:+:+: :+:+:+ ",
-	":+:+:+  +:+ +:+       +:+    +:+ +:+     +:+     +:+     +:+ +:+:+ +:+ ",
-	"+#+ +:+ +#+ +#++:++#  +#+    +:+ +#+     +:+     +#+     +#+  +:+  +#+ ",
-	"+#+  +#+#+# +#+       +#+    +#+  +#+   +#+      +#+     +#+       +#+ ",
-	"#+#   #+#+# #+#       #+#    #+#   #+#+#+#       #+#     #+#       #+# ",
-	"###    #### ########## ########      ###     ########### ###       ### ",
+	'::::    ::: :::::::::: ::::::::  :::     ::: ::::::::::: ::::    ::::  ',
+	':+:+:   :+: :+:       :+:    :+: :+:     :+:     :+:     +:+:+: :+:+:+ ',
+	':+:+:+  +:+ +:+       +:+    +:+ +:+     +:+     +:+     +:+ +:+:+ +:+ ',
+	'+#+ +:+ +#+ +#++:++#  +#+    +:+ +#+     +:+     +#+     +#+  +:+  +#+ ',
+	'+#+  +#+#+# +#+       +#+    +#+  +#+   +#+      +#+     +#+       +#+ ',
+	'#+#   #+#+# #+#       #+#    #+#   #+#+#+#       #+#     #+#       #+# ',
+	'###    #### ########## ########      ###     ########### ###       ### ',
 }
 -- {
--- "                                                                                         .         .           ",
--- "b.             8 8 8888888888       ,o888888o.  `8.`888b           ,8'  8 8888          ,8.       ,8.          ",
--- "888o.          8 8 8888          . 8888     `88. `8.`888b         ,8'   8 8888         ,888.     ,888.         ",
--- "Y88888o.       8 8 8888         ,8 8888       `8b `8.`888b       ,8'    8 8888        .`8888.   .`8888.        ",
--- ".`Y888888o.    8 8 8888         88 8888        `8b `8.`888b     ,8'     8 8888       ,8.`8888. ,8.`8888.       ",
--- "8o. `Y888888o. 8 8 888888888888 88 8888         88  `8.`888b   ,8'      8 8888      ,8'8.`8888,8^8.`8888.      ",
--- "8`Y8o. `Y88888o8 8 8888         88 8888         88   `8.`888b ,8'       8 8888     ,8' `8.`8888' `8.`8888.     ",
--- "8   `Y8o. `Y8888 8 8888         88 8888        ,8P    `8.`888b8'        8 8888    ,8'   `8.`88'   `8.`8888.    ",
--- "8      `Y8o. `Y8 8 8888         `8 8888       ,8P      `8.`888'         8 8888   ,8'     `8.`'     `8.`8888.   ",
--- "8         `Y8o.` 8 8888          ` 8888     ,88'        `8.`8'          8 8888  ,8'       `8        `8.`8888.  ",
--- "8            `Yo 8 888888888888     `8888888P'           `8.`           8 8888 ,8'         `         `8.`8888. ",
+-- '                                                                                         .         .           ',
+-- 'b.             8 8 8888888888       ,o888888o.  `8.`888b           ,8'  8 8888          ,8.       ,8.          ',
+-- '888o.          8 8 8888          . 8888     `88. `8.`888b         ,8'   8 8888         ,888.     ,888.         ',
+-- 'Y88888o.       8 8 8888         ,8 8888       `8b `8.`888b       ,8'    8 8888        .`8888.   .`8888.        ',
+-- '.`Y888888o.    8 8 8888         88 8888        `8b `8.`888b     ,8'     8 8888       ,8.`8888. ,8.`8888.       ',
+-- '8o. `Y888888o. 8 8 888888888888 88 8888         88  `8.`888b   ,8'      8 8888      ,8'8.`8888,8^8.`8888.      ',
+-- '8`Y8o. `Y88888o8 8 8888         88 8888         88   `8.`888b ,8'       8 8888     ,8' `8.`8888' `8.`8888.     ',
+-- '8   `Y8o. `Y8888 8 8888         88 8888        ,8P    `8.`888b8'        8 8888    ,8'   `8.`88'   `8.`8888.    ',
+-- '8      `Y8o. `Y8 8 8888         `8 8888       ,8P      `8.`888'         8 8888   ,8'     `8.`'     `8.`8888.   ',
+-- '8         `Y8o.` 8 8888          ` 8888     ,88'        `8.`8'          8 8888  ,8'       `8        `8.`8888.  ',
+-- '8            `Yo 8 888888888888     `8888888P'           `8.`           8 8888 ,8'         `         `8.`8888. ',
 -- }
 dashboard.section.buttons.val = {
-	dashboard.button("l", "  Last Session", ""),
-	dashboard.button("s", "  Saved Sessions", ""),
-	dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-	dashboard.button("f", "  Find File", ""),
-	dashboard.button("w", "  Find Word", ""),
-	dashboard.button("'", "  Bookmarks", ""),
-	dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
+	dashboard.button('l', '  Last Session', ''),
+	dashboard.button('s', '  Saved Sessions', ''),
+	dashboard.button('n', '  New file', ':ene <BAR> startinsert <CR>'),
+	dashboard.button('f', '  Find File', ''),
+	dashboard.button('w', '  Find Word', ''),
+	dashboard.button('b', '  Bookmarks', ''),
+	dashboard.button('q', '  Quit NVIM', ':qa<CR>'),
 }
 alpha.setup(dashboard.config)
 
-require("notify").setup({
-	background_colour = "#000000",
+require('notify').setup({
+	background_colour = '#000000',
 })
 vim.notify = require('notify')
 require('nvim-tree').setup({
@@ -220,7 +220,7 @@ require('nvim-tree').setup({
 		ignore = false,
 	},
 	renderer = {
-		highlight_modified = "name",
+		highlight_modified = 'name',
 		highlight_git = true,
 	},
 	modified = {
@@ -245,17 +245,17 @@ require('bufferline').setup({
 	options = {
 		offsets = {
 			{
-				filetype = "NvimTree",
-				text = "File Explorer",
-				highlight = "Directory",
-				separator = true -- use a "true" to enable the default, or set your own character
+				filetype = 'NvimTree',
+				text = 'File Explorer',
+				highlight = 'Directory',
+				separator = true -- use a 'true' to enable the default, or set your own character
 			}
 		}
 	}
 })
 require('auto-session').setup({
 	log_level = 'none',
-	auto_session_allowed_dirs = { "~/Projects/*", 'C:/Projects/*' },
+	auto_session_allowed_dirs = { '~/Projects/*', 'C:/Projects/*' },
 })
 require('telescope').setup({
 	defaults = {
@@ -421,7 +421,7 @@ vim.keymap.set('n', '<leader>[', '<cmd>bprev<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<CR>', { desc = 'Build tasks' })
 vim.keymap.set('n', '<leader>ss', require('session-lens').search_session, { desc = '[S]earch [S]essions' })
 vim.keymap.set('n', '<leader>ls', function()
-	local path = require('auto-session').get_latest_session():gsub("\\%%", "%%")
+	local path = require('auto-session').get_latest_session():gsub('\\%%', '%%')
 	require('auto-session').RestoreSession(path)
 end, { desc = '[L]ast [S]ession' })
 
@@ -446,12 +446,12 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- TroubleToggle
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>', { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', { silent = true, noremap = true })
+vim.keymap.set('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>', { silent = true, noremap = true })
 
 ---------------------------------------
 -- Color Scheme
