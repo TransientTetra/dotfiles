@@ -458,12 +458,10 @@ vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = tr
 ---------------------------------------
 vim.cmd.colorscheme('gruvbox')
 -- TODO
--- welcome screen in ~
 -- neotree
 -- closing buffers switches to another buffer, not filetree
 -- movement between open windows with ctrl hjkl
 -- terminal like in astronvim
--- autobrackets? or whatever it is called in astronvim
 -- folding
 -- fix autocomplete with enter (now enter doesn't accept suggestion but makes a newline)
 -- fix lsp_signature (function parameters not being suggested)
