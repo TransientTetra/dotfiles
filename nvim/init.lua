@@ -59,6 +59,7 @@ require("lazy").setup({
 	{ 'rcarriga/nvim-notify' },
 	{ 'stevearc/dressing.nvim' },
 	{ 'stevearc/overseer.nvim' },
+	{ 'goolord/alpha-nvim' },
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make',
@@ -106,6 +107,108 @@ require('scope').setup()
 require('lsp_signature').setup()
 require('dressing').setup()
 require('overseer').setup()
+local alpha = require('alpha')
+local dashboard = require('alpha.themes.dashboard')
+dashboard.section.header.val =
+-- {
+-- "███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗",
+-- "████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║",
+-- "██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║",
+-- "██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║",
+-- "██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║",
+-- "╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝",
+-- }
+-- {
+-- "     .-') _   ('-.                     (`-.           _   .-')    ",
+-- "    ( OO ) )_(  OO)                  _(OO  )_        ( '.( OO )_  ",
+-- ",--./ ,--,'(,------. .-'),-----. ,--(_/   ,. \\ ,-.-') ,--.   ,--.)",
+-- "|   \\ |  |\\ |  .---'( OO'  .-.  '\\   \\   /(__/ |  |OO)|   `.'   | ",
+-- "|    \\|  | )|  |    /   |  | |  | \\   \\ /   /  |  |  \\|         | ",
+-- "|  .     |/(|  '--. \\_) |  |\\|  |  \\   '   /,  |  |(_/|  |'.'|  | ",
+-- "|  |\\    |  |  .--'   \\ |  | |  |   \\     /__),|  |_.'|  |   |  | ",
+-- "|  | \\   |  |  `---.   `'  '-'  '    \\   /   (_|  |   |  |   |  | ",
+-- "`--'  `--'  `------'     `-----'      `-'      `--'   `--'   `--' ",
+-- }
+-- {
+-- " ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓",
+-- " ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒",
+-- "▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░",
+-- "▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ",
+-- "▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒",
+-- "░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░",
+-- "░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░",
+-- "   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ",
+-- "         ░    ░  ░    ░ ░        ░   ░         ░   ",
+-- "                                ░                  ",
+-- }
+-- {
+-- "███▄▄▄▄      ▄████████  ▄██████▄   ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄   ",
+-- "███▀▀▀██▄   ███    ███ ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄ ",
+-- "███   ███   ███    █▀  ███    ███ ███    ███ ███▌ ███   ███   ███ ",
+-- "███   ███  ▄███▄▄▄     ███    ███ ███    ███ ███▌ ███   ███   ███ ",
+-- "███   ███ ▀▀███▀▀▀     ███    ███ ███    ███ ███▌ ███   ███   ███ ",
+-- "███   ███   ███    █▄  ███    ███ ███    ███ ███  ███   ███   ███ ",
+-- "███   ███   ███    ███ ███    ███ ███    ███ ███  ███   ███   ███ ",
+-- " ▀█   █▀    ██████████  ▀██████▀   ▀██████▀  █▀    ▀█   ███   █▀  ",
+-- }
+-- {
+-- " ▐ ▄ ▄▄▄ .       ▌ ▐·▪  • ▌ ▄ ·. ",
+-- "•█▌▐█▀▄.▀·▪     ▪█·█▌██ ·██ ▐███▪",
+-- "▐█▐▐▌▐▀▀▪▄ ▄█▀▄ ▐█▐█•▐█·▐█ ▌▐▌▐█·",
+-- "██▐█▌▐█▄▄▌▐█▌.▐▌ ███ ▐█▌██ ██▌▐█▌",
+-- "▀▀ █▪ ▀▀▀  ▀█▄▀▪. ▀  ▀▀▀▀▀  █▪▀▀▀",
+-- }
+-- {
+-- " ▄▀▀▄ ▀▄  ▄▀▀█▄▄▄▄  ▄▀▀▀▀▄   ▄▀▀▄ ▄▀▀▄  ▄▀▀█▀▄    ▄▀▀▄ ▄▀▄ ",
+-- "█  █ █ █ ▐  ▄▀   ▐ █      █ █   █    █ █   █  █  █  █ ▀  █ ",
+-- "▐  █  ▀█   █▄▄▄▄▄  █      █ ▐  █    █  ▐   █  ▐  ▐  █    █ ",
+-- "  █   █    █    ▌  ▀▄    ▄▀    █   ▄▀      █       █    █  ",
+-- "▄▀   █    ▄▀▄▄▄▄     ▀▀▀▀       ▀▄▀     ▄▀▀▀▀▀▄  ▄▀   ▄▀   ",
+-- "█    ▐    █    ▐                       █       █ █    █    ",
+-- "▐         ▐                            ▐       ▐ ▐    ▐    ",
+-- }
+-- {
+-- "   ▄   ▄███▄   ████▄     ▄   ▄█ █▀▄▀█ ",
+-- "    █  █▀   ▀  █   █      █  ██ █ █ █ ",
+-- "██   █ ██▄▄    █   █ █     █ ██ █ ▄ █ ",
+-- "█ █  █ █▄   ▄▀ ▀████  █    █ ▐█ █   █ ",
+-- "█  █ █ ▀███▀           █  █   ▐    █  ",
+-- "█   ██                  █▐        ▀   ",
+-- "                        ▐             ",
+-- }
+{
+"::::    ::: :::::::::: ::::::::  :::     ::: ::::::::::: ::::    ::::  ",
+":+:+:   :+: :+:       :+:    :+: :+:     :+:     :+:     +:+:+: :+:+:+ ",
+":+:+:+  +:+ +:+       +:+    +:+ +:+     +:+     +:+     +:+ +:+:+ +:+ ",
+"+#+ +:+ +#+ +#++:++#  +#+    +:+ +#+     +:+     +#+     +#+  +:+  +#+ ",
+"+#+  +#+#+# +#+       +#+    +#+  +#+   +#+      +#+     +#+       +#+ ",
+"#+#   #+#+# #+#       #+#    #+#   #+#+#+#       #+#     #+#       #+# ",
+"###    #### ########## ########      ###     ########### ###       ### ",
+}
+-- {
+-- "                                                                                         .         .           ",
+-- "b.             8 8 8888888888       ,o888888o.  `8.`888b           ,8'  8 8888          ,8.       ,8.          ",
+-- "888o.          8 8 8888          . 8888     `88. `8.`888b         ,8'   8 8888         ,888.     ,888.         ",
+-- "Y88888o.       8 8 8888         ,8 8888       `8b `8.`888b       ,8'    8 8888        .`8888.   .`8888.        ",
+-- ".`Y888888o.    8 8 8888         88 8888        `8b `8.`888b     ,8'     8 8888       ,8.`8888. ,8.`8888.       ",
+-- "8o. `Y888888o. 8 8 888888888888 88 8888         88  `8.`888b   ,8'      8 8888      ,8'8.`8888,8^8.`8888.      ",
+-- "8`Y8o. `Y88888o8 8 8888         88 8888         88   `8.`888b ,8'       8 8888     ,8' `8.`8888' `8.`8888.     ",
+-- "8   `Y8o. `Y8888 8 8888         88 8888        ,8P    `8.`888b8'        8 8888    ,8'   `8.`88'   `8.`8888.    ",
+-- "8      `Y8o. `Y8 8 8888         `8 8888       ,8P      `8.`888'         8 8888   ,8'     `8.`'     `8.`8888.   ",
+-- "8         `Y8o.` 8 8888          ` 8888     ,88'        `8.`8'          8 8888  ,8'       `8        `8.`8888.  ",
+-- "8            `Yo 8 888888888888     `8888888P'           `8.`           8 8888 ,8'         `         `8.`8888. ",
+-- }
+dashboard.section.buttons.val = {
+    dashboard.button("l", "  Last Session", ""),
+    dashboard.button("s", "  Saved Sessions", ""),
+	dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
+    dashboard.button("f", "  Find File", ""),
+    dashboard.button("w", "  Find Word", ""),
+    dashboard.button("'", "  Bookmarks", ""),
+	dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
+}
+alpha.setup(dashboard.config)
+
 require("notify").setup({
 	background_colour = "#000000",
 })
@@ -150,6 +253,7 @@ require('bufferline').setup({
 })
 require('auto-session').setup({
 	log_level = 'none',
+	auto_session_allowed_dirs = { "~/Projects/*", 'C:/Projects/*' },
 })
 require('telescope').setup({
 	defaults = {
@@ -314,6 +418,10 @@ vim.keymap.set('n', '<leader>]', '<cmd>bnext<CR>', { desc = 'Next tab' })
 vim.keymap.set('n', '<leader>[', '<cmd>bprev<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<CR>', { desc = 'Build tasks' })
 vim.keymap.set('n', '<leader>ss', require('session-lens').search_session, { desc = '[S]earch [S]essions' })
+vim.keymap.set('n', '<leader>ls', function()
+	local path = require('auto-session').get_latest_session():gsub("\\%%", "%%")
+	require('auto-session').RestoreSession(path)
+end, { desc = '[L]ast [S]ession' })
 -- Autocomplete braces
 vim.keymap.set('i', '(', '()<left>')
 vim.keymap.set('i', '[', '[]<left>')
@@ -358,3 +466,16 @@ vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = tr
 -- Color Scheme
 ---------------------------------------
 vim.cmd.colorscheme('gruvbox')
+-- TODO
+-- welcome screen in ~
+-- neotree
+-- closing buffers switches to another buffer, not filetree
+-- movement between open windows with ctrl hjkl
+-- terminal like in astronvim
+-- autobrackets? or whatever it is called in astronvim
+-- folding
+-- fix autocomplete with enter (now enter doesn't accept suggestion but makes a newline)
+-- fix lsp_signature (function parameters not being suggested)
+-- split into files
+-- fix diagnostics icons
+-- fix ctrl-/ not commenting lines
