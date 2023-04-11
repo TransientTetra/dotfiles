@@ -16,6 +16,7 @@ alias sl=ls
 
 alias mkdir="mkdir -p"
 
-alias vi=vim
+alias vi=nvim
+alias vim=nvim
 
 alias gs="git status"
