@@ -472,3 +472,5 @@ vim.cmd.colorscheme('gruvbox')
 -- split into files
 -- fix diagnostics icons
 -- fix ctrl-/ not commenting lines
+-- pretty cmp completion icons and boxes
+-- underline errors with red wavy line
