@@ -389,6 +389,11 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	float = true,
 })
+require('cmp').setup({
+	mapping = {
+		['<CR>'] = require('cmp').mapping.confirm({select = false}),
+	}
+})
 
 ---------------------------------------
 -- Autocommands
@@ -463,7 +468,6 @@ vim.cmd.colorscheme('gruvbox')
 -- movement between open windows with ctrl hjkl
 -- terminal like in astronvim
 -- folding
--- fix autocomplete with enter (now enter doesn't accept suggestion but makes a newline)
 -- fix lsp_signature (function parameters not being suggested)
 -- split into files
 -- fix diagnostics icons
