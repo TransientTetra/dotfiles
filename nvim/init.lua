@@ -374,7 +374,7 @@ lsp.on_attach(function(_, bufnr)
 
 	-- See `:help K` for why this keymap
 	nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-	nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+	nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
 
 	-- Lesser used LSP functionality
 	nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -431,7 +431,8 @@ end
 -- Personal
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', { desc = 'Save' })
-vim.keymap.set('n', '<leader>q', '<cmd>qa<cr>', { desc = 'Quit' })
+vim.keymap.set('n', '<leader>w', '<cmd>write<cr>', { desc = 'Save' })
+vim.keymap.set('n', '<leader>q', '<cmd>confirm q<cr>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>]', '<cmd>bnext<cr>', { desc = 'Next tab' })
 vim.keymap.set('n', '<leader>[', '<cmd>bprev<cr>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<cr>', { desc = 'Build tasks' })
@@ -439,6 +440,20 @@ vim.keymap.set('i', '<C-h>', '<left>', { desc = 'Move cursor left' })
 vim.keymap.set('i', '<C-j>', '<down>', { desc = 'Move cursor down' })
 vim.keymap.set('i', '<C-k>', '<up>', { desc = 'Move cursor up' })
 vim.keymap.set('i', '<C-l>', '<right>', { desc = 'Move cursor right' })
+
+-- Splits
+vim.keymap.set('n', '|', '<cmd>vsplit<cr>', { desc = 'Vertical split' })
+vim.keymap.set('n', '\\', '<cmd>split<cr>', { desc = 'Horizontal split' })
+vim.keymap.set('n', '<C-x>', '<C-w>q', { desc = 'Close current split' })
+vim.keymap.set('n', '<C-X>', '<C-w>o', { desc = 'Close all but the current split' })
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left split' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to below split' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to above split' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right split' })
+vim.keymap.set('n', '<C-Up>', '<cmd>resize -2<CR>', { desc = 'Resize split up' })
+vim.keymap.set('n', '<C-Down>', '<cmd>resize +2<CR>', { desc = 'Resize split down' })
+vim.keymap.set('n', '<C-Left>', '<cmd>vertical resize -2<CR>', { desc = 'Resize split left' })
+vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<CR>', { desc = 'Resize split right' })
 
 -- Session
 vim.keymap.set('n', '<leader>sb', require('session-lens').search_session, { desc = 'Browse saved sessions' })
