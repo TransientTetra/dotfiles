@@ -81,8 +81,8 @@ require('lazy').setup({
 		'VonHeikemen/lsp-zero.nvim',
 		dependencies = {
 			-- LSP Support
-			{ 'neovim/nvim-lspconfig' }, -- Required
-			{ 'williamboman/mason.nvim' }, -- Optional
+			{ 'neovim/nvim-lspconfig' },    -- Required
+			{ 'williamboman/mason.nvim' },  -- Optional
 			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
 			-- Autocompletion
@@ -94,7 +94,7 @@ require('lazy').setup({
 			{ 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
 			-- Snippets
-			{ 'L3MON4D3/LuaSnip' }, -- Required
+			{ 'L3MON4D3/LuaSnip' },    -- Required
 			{ 'rafamadriz/friendly-snippets' }, -- Optional
 		}
 	},
@@ -391,7 +391,7 @@ vim.diagnostic.config({
 })
 require('cmp').setup({
 	mapping = {
-		['<CR>'] = require('cmp').mapping.confirm({select = false}),
+		['<CR>'] = require('cmp').mapping.confirm({ select = false }),
 	}
 })
 
@@ -425,10 +425,10 @@ vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>]', '<cmd>bnext<CR>', { desc = 'Next tab' })
 vim.keymap.set('n', '<leader>[', '<cmd>bprev<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<CR>', { desc = 'Build tasks' })
-vim.keymap.set('i', '<C-h>', '<left>', {desc = 'Move cursor left'})
-vim.keymap.set('i', '<C-j>', '<down>', {desc = 'Move cursor down'})
-vim.keymap.set('i', '<C-k>', '<up>', {desc = 'Move cursor up'})
-vim.keymap.set('i', '<C-l>', '<right>', {desc = 'Move cursor right'})
+vim.keymap.set('i', '<C-h>', '<left>', { desc = 'Move cursor left' })
+vim.keymap.set('i', '<C-j>', '<down>', { desc = 'Move cursor down' })
+vim.keymap.set('i', '<C-k>', '<up>', { desc = 'Move cursor up' })
+vim.keymap.set('i', '<C-l>', '<right>', { desc = 'Move cursor right' })
 
 -- Session
 vim.keymap.set('n', '<leader>ss', require('session-lens').search_session, { desc = '[S]earch [S]essions' })
