@@ -255,7 +255,9 @@ require('bufferline').setup({
 })
 require('auto-session').setup({
 	log_level = 'none',
-	auto_session_allowed_dirs = { '~/Projects/*', 'C:/Projects/*' },
+	auto_session_create_enabled = false,
+	auto_save_enabled = true,
+	auto_restore_enabled = true,
 })
 require('telescope').setup({
 	defaults = {
