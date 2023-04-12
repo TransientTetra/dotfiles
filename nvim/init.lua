@@ -421,9 +421,16 @@ vim.cmd [[autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE]]
 -- Personal
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', { desc = 'Save' })
+vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>]', '<cmd>bnext<CR>', { desc = 'Next tab' })
 vim.keymap.set('n', '<leader>[', '<cmd>bprev<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<CR>', { desc = 'Build tasks' })
+vim.keymap.set('i', '<C-h>', '<left>', {desc = 'Move cursor left'})
+vim.keymap.set('i', '<C-j>', '<down>', {desc = 'Move cursor down'})
+vim.keymap.set('i', '<C-k>', '<up>', {desc = 'Move cursor up'})
+vim.keymap.set('i', '<C-l>', '<right>', {desc = 'Move cursor right'})
+
+-- Session
 vim.keymap.set('n', '<leader>ss', require('session-lens').search_session, { desc = '[S]earch [S]essions' })
 vim.keymap.set('n', '<leader>ls', function()
 	local path = require('auto-session').get_latest_session():gsub('\\%%', '%%')
