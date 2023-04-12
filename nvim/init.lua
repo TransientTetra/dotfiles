@@ -201,13 +201,13 @@ dashboard.section.header.val =
 -- '8            `Yo 8 888888888888     `8888888P'           `8.`           8 8888 ,8'         `         `8.`8888. ',
 -- }
 dashboard.section.buttons.val = {
-	dashboard.button('l', '  Last Session', ''),
-	dashboard.button('s', '  Saved Sessions', ''),
-	dashboard.button('n', '  New file', ':ene <BAR> startinsert <CR>'),
-	dashboard.button('f', '  Find File', ''),
-	dashboard.button('w', '  Find Word', ''),
-	dashboard.button('b', '  Bookmarks', ''),
-	dashboard.button('q', '  Quit NVIM', ':qa<CR>'),
+	dashboard.button('l', '  Last Session', '<cmd>lua RestoreLatestSession()<cr>'),
+	dashboard.button('s', '  Saved Sessions', "<cmd>lua require('session-lens').search_session()<cr>"),
+	dashboard.button('n', '  New file', '<cmd>ene <BAR> startinsert <cr>'),
+	dashboard.button('f', '  Find File', '<cmd>Telescope find_files<cr>'),
+	dashboard.button('w', '  Find Word', '<cmd>Telescope live_grep<cr>'),
+	-- dashboard.button('b', '  Bookmarks', ''),
+	dashboard.button('q', '  Quit NVIM', '<cmd>qa<cr>'),
 }
 alpha.setup(dashboard.config)
 
@@ -391,7 +391,7 @@ vim.diagnostic.config({
 })
 require('cmp').setup({
 	mapping = {
-		['<CR>'] = require('cmp').mapping.confirm({ select = false }),
+		['<cr>'] = require('cmp').mapping.confirm({ select = false }),
 	}
 })
 
@@ -416,26 +416,34 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {f
 vim.cmd [[autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE]]
 
 ---------------------------------------
--- Keybindings
+-- Functions
+---------------------------------------
+RestoreLatestSession = function()
+	local path = require('auto-session').get_latest_session():gsub('\\%%', '%%')
+	require('auto-session').RestoreSession(path)
+end
+
+---------------------------------------
+-- Keymaps
 ---------------------------------------
 -- Personal
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', { desc = 'Save' })
-vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { desc = 'Quit' })
-vim.keymap.set('n', '<leader>]', '<cmd>bnext<CR>', { desc = 'Next tab' })
-vim.keymap.set('n', '<leader>[', '<cmd>bprev<CR>', { desc = 'Previous tab' })
-vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<CR>', { desc = 'Build tasks' })
+vim.keymap.set('n', '<leader>q', '<cmd>qa<cr>', { desc = 'Quit' })
+vim.keymap.set('n', '<leader>]', '<cmd>bnext<cr>', { desc = 'Next tab' })
+vim.keymap.set('n', '<leader>[', '<cmd>bprev<cr>', { desc = 'Previous tab' })
+vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<cr>', { desc = 'Build tasks' })
 vim.keymap.set('i', '<C-h>', '<left>', { desc = 'Move cursor left' })
 vim.keymap.set('i', '<C-j>', '<down>', { desc = 'Move cursor down' })
 vim.keymap.set('i', '<C-k>', '<up>', { desc = 'Move cursor up' })
 vim.keymap.set('i', '<C-l>', '<right>', { desc = 'Move cursor right' })
 
 -- Session
-vim.keymap.set('n', '<leader>ss', require('session-lens').search_session, { desc = '[S]earch [S]essions' })
-vim.keymap.set('n', '<leader>ls', function()
-	local path = require('auto-session').get_latest_session():gsub('\\%%', '%%')
-	require('auto-session').RestoreSession(path)
-end, { desc = '[L]ast [S]ession' })
+vim.keymap.set('n', '<leader>sb', require('session-lens').search_session, { desc = 'Browse saved sessions' })
+vim.keymap.set('n', '<leader>ss', require('auto-session').SaveSession, { desc = 'Save session' })
+vim.keymap.set('n', '<leader>sD', require('auto-session').DeleteSession, { desc = 'Delete current session' })
+vim.keymap.set('n', '<leader>sd', '<cmd>Autosession delete<cr>', { desc = 'Browse and delete a session' })
+vim.keymap.set('n', '<leader>sl', RestoreLatestSession, { desc = 'Load most recent session' })
 
 -- Comment
 vim.keymap.set('n', '<C-_>', 'gcc', { desc = 'Toggle line comment' })
@@ -451,11 +459,11 @@ vim.keymap.set('n', '<leader>/', function()
 		previewer = false,
 	})
 end, { desc = '[/] Fuzzily search in current buffer' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = 'Find help' })
+vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = 'Find current word' })
+vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Find by grep' })
+vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = 'Find diagnostics' })
 
 -- TroubleToggle
 vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true })
