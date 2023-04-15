@@ -43,7 +43,7 @@ require('lazy').setup({
 	{ 'nvim-lualine/lualine.nvim' },
 	{ 'numToStr/Comment.nvim' },
 	{ 'lukas-reineke/indent-blankline.nvim' },
-	{ 'akinsho/bufferline.nvim',            dependencies = { 'kyazdani42/nvim-web-devicons' } },
+	{ 'akinsho/bufferline.nvim',            dependencies = { 'nvim-tree/nvim-web-devicons' } },
 	{ 'nvim-tree/nvim-tree.lua' },
 	{ 'lewis6991/gitsigns.nvim' },
 	{ 'nvim-telescope/telescope.nvim',      dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -52,7 +52,7 @@ require('lazy').setup({
 	{ 'folke/which-key.nvim' },
 	{ 'tpope/vim-sleuth' },
 	{ 'tiagovla/scope.nvim' },
-	{ 'folke/trouble.nvim',                 dependencies = { 'kyazdani42/nvim-web-devicons' } },
+	{ 'folke/trouble.nvim',                 dependencies = { 'nvim-tree/nvim-web-devicons' } },
 	{ 'ray-x/lsp_signature.nvim' },
 	{ 'tpope/vim-fugitive' },
 	{ 'tpope/vim-rhubarb',                  dependencies = { 'tpope/vim-fugitive' } },
@@ -440,6 +440,7 @@ vim.keymap.set('i', '<C-h>', '<left>', { desc = 'Move cursor left' })
 vim.keymap.set('i', '<C-j>', '<down>', { desc = 'Move cursor down' })
 vim.keymap.set('i', '<C-k>', '<up>', { desc = 'Move cursor up' })
 vim.keymap.set('i', '<C-l>', '<right>', { desc = 'Move cursor right' })
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle file explorer' })
 
 -- Splits
 vim.keymap.set('n', '|', '<cmd>vsplit<cr>', { desc = 'Vertical split' })
@@ -467,12 +468,12 @@ vim.keymap.set('n', '<C-_>',
 	function() require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
 	{ desc = 'Toggle line comment' })
 vim.keymap.set('v', '<C-_>', '<cmd>lua require(\'Comment.api\').toggle.linewise(vim.fn.visualmode())<cr>',
-{ desc = 'Toggle line comment' })
+	{ desc = 'Toggle line comment' })
 vim.keymap.set('n', '<leader>/',
 	function() require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
 	{ desc = 'Toggle line comment' })
 vim.keymap.set('v', '<leader>/', '<cmd>lua require(\'Comment.api\').toggle.linewise(vim.fn.visualmode())<cr>',
-{ desc = 'Toggle line comment' })
+	{ desc = 'Toggle line comment' })
 
 -- Telescope
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
