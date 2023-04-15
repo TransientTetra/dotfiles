@@ -202,7 +202,7 @@ dashboard.section.header.val =
 -- }
 dashboard.section.buttons.val = {
 	dashboard.button('l', '  Last Session', '<cmd>lua RestoreLatestSession()<cr>'),
-	dashboard.button('s', '  Saved Sessions', "<cmd>lua require('session-lens').search_session()<cr>"),
+	dashboard.button('s', '  Saved Sessions', '<cmd>lua require(\'session-lens\').search_session()<cr>'),
 	dashboard.button('n', '  New file', '<cmd>ene <BAR> startinsert <cr>'),
 	dashboard.button('f', '  Find File', '<cmd>Telescope find_files<cr>'),
 	dashboard.button('w', '  Find Word', '<cmd>Telescope live_grep<cr>'),
@@ -463,19 +463,27 @@ vim.keymap.set('n', '<leader>sd', '<cmd>Autosession delete<cr>', { desc = 'Brows
 vim.keymap.set('n', '<leader>sl', RestoreLatestSession, { desc = 'Load most recent session' })
 
 -- Comment
-vim.keymap.set('n', '<C-_>', 'gcc', { desc = 'Toggle line comment' })
-vim.keymap.set('v', '<C-_>', 'gc', { desc = 'Toggle line comment' })
+vim.keymap.set('n', '<C-_>',
+	function() require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
+	{ desc = 'Toggle line comment' })
+vim.keymap.set('v', '<C-_>', '<cmd>lua require(\'Comment.api\').toggle.linewise(vim.fn.visualmode())<cr>',
+{ desc = 'Toggle line comment' })
+vim.keymap.set('n', '<leader>/',
+	function() require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
+	{ desc = 'Toggle line comment' })
+vim.keymap.set('v', '<leader>/', '<cmd>lua require(\'Comment.api\').toggle.linewise(vim.fn.visualmode())<cr>',
+{ desc = 'Toggle line comment' })
 
 -- Telescope
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
+vim.keymap.set('n', '<leader>fb', function()
 	-- You can pass additional configuration to telescope to change theme, layout, etc.
 	require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
 		winblend = 10,
 		previewer = false,
 	})
-end, { desc = '[/] Fuzzily search in current buffer' })
+end, { desc = 'Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Find files' })
 vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = 'Find help' })
 vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = 'Find current word' })
@@ -503,6 +511,5 @@ vim.cmd.colorscheme('gruvbox')
 -- fix lsp_signature (function parameters not being suggested)
 -- split into files
 -- fix diagnostics icons
--- fix ctrl-/ not commenting lines
 -- pretty cmp completion icons and boxes
 -- underline errors with red wavy line
