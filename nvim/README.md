@@ -1,0 +1,33 @@
+# Neovim config structure
+- init.lua - entry point
+- user/ - all neovim config and config for package manager goes here
+	- autocommands.lua - user created autocommands
+	- keymaps.lua - user defined keymaps
+	- lazy.lua - package manager config
+	- options.lua - vim options
+	- theme.lua - color scheme and transparency
+	- utils.lua - miscellaneous helper functions
+- plugins/ - all plugins config goes here
+	- dashboard.lua - startup screen
+	- explorer.lua - file explorer config
+	- lsp.lua - lsp config
+	- misc.lua - miscellaneous plugins config
+	- session.lua - session management config
+	- telescope.lua - telescope config
+	- treesitter.lua - treesitter config
+	- ui.lua - user interface config
+	- vcs.lua - version control plugins config
+
+# Neovim todo list
+- autopairs to auto select first
+- neotree instead of nvimtree
+- heirline instead of bufferline and lualine
+- closing buffers switches to another buffer, not filetree
+- toggleterminal like in astronvim
+- folding
+- fix diagnostics icons
+- pretty cmp completion icons and boxes
+- underline errors with red wavy line
+- fix multiline comment (cmds to how they were before)
+- pretty lazy and mason windows (w/ transparency)
+- transparent notify windows
