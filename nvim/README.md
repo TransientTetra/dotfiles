@@ -31,3 +31,6 @@
 - fix multiline comment (cmds to how they were before)
 - pretty lazy and mason windows (w/ transparency)
 - transparent notify windows
+- dap
+- git keymaps
+- nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc

@@ -71,3 +71,37 @@ vim.keymap.set('n', '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>',
 vim.keymap.set('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', { silent = true, noremap = true })
 vim.keymap.set('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>', { silent = true, noremap = true })
+return {
+	lspKeymaps = function(bufnr)
+		vim.keymap.set({ 'n', 'x' }, '<leader>lf',
+			function() vim.lsp.buf.format({ async = false, timeout_ms = 10000 }) end,
+			{ buffer = bufnr, desc = 'Format buffer' })
+
+		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename' })
+		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, desc = 'Code action' })
+
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Goto definition' })
+		vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
+			{ buffer = bufnr, desc = 'Goto references' })
+		vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = bufnr, desc = 'Goto implementation' })
+		vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = bufnr, desc = 'Type definition' })
+		vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols,
+			{ buffer = bufnr, desc = 'Document symbols' })
+		vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols,
+			{ buffer = bufnr, desc = 'Workspace symbols' })
+
+		-- See `:help K` for why this keymap
+		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, desc = 'Hover documentation' })
+		vim.keymap.set('n', '<leader>k', vim.lsp.buf.signature_help,
+			{ buffer = bufnr, desc = 'Signature documentation' })
+
+		-- Lesser used LSP functionality
+		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = 'Goto declaration' })
+		vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
+			{ buffer = bufnr, desc = 'Workspace add folder' })
+		vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
+			{ buffer = bufnr, desc = 'Workspace remove folder' })
+		vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+			{ buffer = bufnr, desc = 'Workspace list folders' })
+	end
+}
