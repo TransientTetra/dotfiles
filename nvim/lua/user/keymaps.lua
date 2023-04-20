@@ -37,16 +37,10 @@ vim.keymap.set('n', '<leader>sd', '<cmd>Autosession delete<cr>', { desc = 'Brows
 vim.keymap.set('n', '<leader>sl', require('user.utils').RestoreLatestSession, { desc = 'Load most recent session' })
 
 -- Comment
-vim.keymap.set('n', '<C-_>',
-	function() require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
-	{ desc = 'Toggle line comment' })
-vim.keymap.set('v', '<C-_>', '<cmd>lua require(\'Comment.api\').toggle.linewise(vim.fn.visualmode())<cr>',
-	{ desc = 'Toggle line comment' })
-vim.keymap.set('n', '<leader>/',
-	function() require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end,
-	{ desc = 'Toggle line comment' })
-vim.keymap.set('v', '<leader>/', '<cmd>lua require(\'Comment.api\').toggle.linewise(vim.fn.visualmode())<cr>',
-	{ desc = 'Toggle line comment' })
+vim.keymap.set('n', '<C-_>', 'gcc', { desc = 'Toggle line comment', remap = true })
+vim.keymap.set('v', '<C-_>', 'gc', { desc = 'Toggle line comment', remap = true })
+vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Toggle line comment', remap = true })
+vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Toggle line comment', remap = true })
 
 -- Telescope
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
