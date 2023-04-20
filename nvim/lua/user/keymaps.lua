@@ -84,6 +84,33 @@ if IsAvailable('trouble.nvim') then
 	vim.keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', { silent = true, noremap = true })
 	vim.keymap.set('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>', { silent = true, noremap = true })
 end
+
+-- DAP
+if IsAvailable('nvim-dap') then
+	vim.keymap.set('n', '<F5>', require('dap').continue, { desc = 'Debugger: Start' })
+	vim.keymap.set('n', '<F17>', require('dap').terminate, { desc = 'Debugger: Stop' })
+	vim.keymap.set('n', '<F29>', require('dap').restart_frame, { desc = 'Debugger: Restart' })
+	vim.keymap.set('n', '<F6>', require('dap').pause, { desc = 'Debugger: Pause' })
+	vim.keymap.set('n', '<F9>', require('dap').toggle_breakpoint, { desc = 'Debugger: Toggle Breakpoint' })
+	vim.keymap.set('n', '<F10>', require('dap').step_over, { desc = 'Debugger: Step Over' })
+	vim.keymap.set('n', '<F11>', require('dap').step_into, { desc = 'Debugger: Step Into' })
+	vim.keymap.set('n', '<F23>', require('dap').step_out, { desc = 'Debugger: Step Out' })
+	vim.keymap.set('n', '<leader>db', require('dap').toggle_breakpoint, { desc = 'Toggle Breakpoint (F9)' })
+	vim.keymap.set('n', '<leader>dB', require('dap').clear_breakpoints, { desc = 'Clear Breakpoints' })
+	vim.keymap.set('n', '<leader>dc', require('dap').continue, { desc = 'Start/Continue (F5)' })
+	vim.keymap.set('n', '<leader>di', require('dap').step_into, { desc = 'Step Into (F11)' })
+	vim.keymap.set('n', '<leader>do', require('dap').step_over, { desc = 'Step Over (F10)' })
+	vim.keymap.set('n', '<leader>dO', require('dap').step_out, { desc = 'Step Out (Shift F11)' })
+	vim.keymap.set('n', '<leader>dq', require('dap').close, { desc = 'Close Session' })
+	vim.keymap.set('n', '<leader>dQ', require('dap').terminate, { desc = 'Terminate Session (Shift F5)' })
+	vim.keymap.set('n', '<leader>dp', require('dap').pause, { desc = 'Pause (F6)' })
+	vim.keymap.set('n', '<leader>dr', require('dap').restart_frame, { desc = 'Restart (Ctrl F5)' })
+	vim.keymap.set('n', '<leader>dR', require('dap').repl.toggle, { desc = 'Toggle REPL' })
+	if IsAvailable('nvim-dap-ui') then
+		vim.keymap.set('n', '<leader>du', require('dapui').toggle, { desc = 'Toggle Debugger UI' })
+		vim.keymap.set('n', '<leader>dh', require('dap.ui.widgets').hover, { desc = 'Debugger Hover' })
+	end
+end
 return {
 	lspKeymaps = function(bufnr)
 		vim.keymap.set({ 'n', 'x' }, '<leader>lf',
