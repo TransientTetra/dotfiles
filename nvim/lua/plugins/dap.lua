@@ -43,6 +43,8 @@ return {
 			dap.configurations.cpp = CPPDBG_CONFIG
 			dap.configurations.c = CPPDBG_CONFIG
 			dap.configurations.rust = CPPDBG_CONFIG
+
+			vim.api.nvim_set_hl(0, "DapStoppedLinehl", { bg = "#555530" })
 		end
 	},
 }
