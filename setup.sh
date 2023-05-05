@@ -1,8 +1,7 @@
 #!/bin/sh
 
-USER_=$(id -u -n)
-NPROC=$(nproc)
 LIST_OF_APPS="
+bash
 clang
 coreutils
 fdisk
@@ -19,8 +18,6 @@ ripgrep
 gzip
 make
 neofetch
-nodejs
-npm
 p7zip
 parted
 python3
@@ -44,6 +41,12 @@ zsh-syntax-highlighting
 "
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y $LIST_OF_APPS
+
+USER_=$(id -u -n)
+NPROC=$(nproc)
+
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
 
 git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/Kitware/CMake.git ~/Projects/CMake
 chmod 700 ~/Projects/CMake/bootstrap
