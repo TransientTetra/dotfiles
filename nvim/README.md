@@ -23,14 +23,13 @@
 - neotree instead of nvimtree
 - heirline instead of bufferline and lualine
 - closing buffers switches to another buffer, not filetree
-- toggleterminal like in astronvim
 - folding
 - fix diagnostics icons
 - pretty cmp completion icons and boxes
 - underline errors with red wavy line
-- fix multiline comment (cmds to how they were before)
 - pretty lazy and mason windows (w/ transparency)
 - transparent notify windows
+- fix terminal breaking transparency
 - dap
 - git keymaps
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc

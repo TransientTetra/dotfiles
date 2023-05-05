@@ -111,6 +111,24 @@ if IsAvailable('nvim-dap') then
 		vim.keymap.set('n', '<leader>dh', require('dap.ui.widgets').hover, { desc = 'Debugger Hover' })
 	end
 end
+
+-- Terminal
+if IsAvailable('toggleterm.nvim') then
+	vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<cr>', { desc = 'ToggleTerm float' })
+	vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm size=10 direction=horizontal<cr>',
+		{ desc = 'ToggleTerm horizontal split' })
+	vim.keymap.set('n', '<leader>tv', '<cmd>ToggleTerm size=80 direction=vertical<cr>',
+		{ desc = 'ToggleTerm vertical split' })
+	vim.keymap.set('n', '<F7>', '<cmd>ToggleTerm<cr>', { desc = 'Toggle terminal' })
+	vim.keymap.set('t', '<F7>', '<cmd>ToggleTerm<cr>', { desc = 'Toggle terminal' })
+	vim.keymap.set('n', '<C-\'>', '<cmd>ToggleTerm<cr>', { desc = 'Toggle terminal' })
+	vim.keymap.set('t', '<C-\'>', '<cmd>ToggleTerm<cr>', { desc = 'Toggle terminal' })
+	vim.keymap.set('t', '<C-h>', '<cmd>wincmd h<cr>', { desc = 'Terminal left window navigation' })
+	vim.keymap.set('t', '<C-j>', '<cmd>wincmd j<cr>', { desc = 'Terminal down window navigation' })
+	vim.keymap.set('t', '<C-k>', '<cmd>wincmd k<cr>', { desc = 'Terminal up window navigation' })
+	vim.keymap.set('t', '<C-l>', '<cmd>wincmd l<cr>', { desc = 'Terminal right window navigation' })
+end
+
 return {
 	lspKeymaps = function(bufnr)
 		vim.keymap.set({ 'n', 'x' }, '<leader>lf',
