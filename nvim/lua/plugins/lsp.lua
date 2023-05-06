@@ -42,9 +42,30 @@ return {
 				update_in_insert = false,
 				float = true,
 			})
-			require('cmp').setup({
+			local cmp = require('cmp')
+			local border_opts = {
+				border = "single",
+				winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+			}
+			cmp.setup({
 				mapping = {
-					['<cr>'] = require('cmp').mapping.confirm({ select = false }),
+					['<cr>'] = cmp.mapping.confirm({ select = false }),
+				},
+				formatting = {
+					format = require('lspkind').cmp_format()
+				},
+				sources = cmp.config.sources {
+					{ name = "nvim_lsp", priority = 1000 },
+					{ name = "luasnip",  priority = 750 },
+					{ name = "buffer",   priority = 500 },
+					{ name = "path",     priority = 250 },
+				},
+				window = {
+					completion = cmp.config.window.bordered(border_opts),
+					documentation = cmp.config.window.bordered(border_opts),
+				},
+				snippet = {
+					expand = function(args) require('luasnip').lsp_expand(args.body) end,
 				},
 			})
 		end

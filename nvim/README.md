@@ -25,7 +25,6 @@
 - closing buffers switches to another buffer, not filetree
 - folding
 - fix diagnostics icons
-- pretty cmp completion icons and boxes
 - underline errors with red wavy line
 - pretty lazy and mason windows (w/ transparency)
 - transparent notify windows
