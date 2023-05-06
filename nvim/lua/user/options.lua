@@ -21,3 +21,4 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 vim.o.scrolloff = 4
 vim.o.updatetime = 250
+vim.g.icons_enabled = true

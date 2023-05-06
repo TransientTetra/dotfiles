@@ -36,5 +36,30 @@ return {
 		end
 	},
 	{ 'stevearc/dressing.nvim',              opts = {} },
-	{ 'folke/which-key.nvim',                opts = {} },
+	{
+		'folke/which-key.nvim',
+		opts = {
+			icons = { group = vim.g.icons_enabled and '' or '+', separator = '' },
+			disable = { filetypes = { 'TelescopePrompt' } },
+		},
+		config = function(_, opts)
+			local wk_avail, wk = pcall(require, 'which-key')
+			if wk_avail then
+				wk.setup(opts)
+				wk.register({
+					f = { name = '󰍉 Find' },
+					p = { name = '󰏖 Packages' },
+					l = { name = ' LSP' },
+					u = { name = ' UI' },
+					b = { name = '󰓩 Buffers' },
+					d = { name = ' Debugger' },
+					g = { name = '󰊢 Git' },
+					s = { name = '󱂬 Session' },
+					t = { name = ' Terminal' },
+					x = { name = '󱠪 Trouble' },
+					o = { name = ' Overseer' },
+				}, { prefix = '<leader>' })
+			end
+		end
+	},
 }

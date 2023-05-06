@@ -31,6 +31,7 @@ local IsAvailable = require('user.utils').IsAvailable
 -- Overseer
 if IsAvailable('overseer.nvim') then
 	vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<cr>', { desc = 'Build tasks' })
+	vim.keymap.set('n', '<leader>ob', '<cmd>OverseerRun<cr>', { desc = 'Build tasks' })
 end
 
 -- File explorer
@@ -135,31 +136,31 @@ return {
 			function() vim.lsp.buf.format({ async = false, timeout_ms = 10000 }) end,
 			{ buffer = bufnr, desc = 'Format buffer' })
 
-		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename' })
-		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, desc = 'Code action' })
+		vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename' })
+		vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { buffer = bufnr, desc = 'Code action' })
 
-		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Goto definition' })
-		vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
+		vim.keymap.set('n', '<leader>ld', vim.lsp.buf.declaration, { buffer = bufnr, desc = 'Goto declaration' })
+		vim.keymap.set('n', '<leader>lD', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Goto definition' })
+		vim.keymap.set('n', '<leader>lR', require('telescope.builtin').lsp_references,
 			{ buffer = bufnr, desc = 'Goto references' })
-		vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = bufnr, desc = 'Goto implementation' })
-		vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = bufnr, desc = 'Type definition' })
-		vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols,
+		vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, { buffer = bufnr, desc = 'Goto implementation' })
+		vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, { buffer = bufnr, desc = 'Type definition' })
+		vim.keymap.set('n', '<leader>ls', require('telescope.builtin').lsp_document_symbols,
 			{ buffer = bufnr, desc = 'Document symbols' })
-		vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols,
+		vim.keymap.set('n', '<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols,
 			{ buffer = bufnr, desc = 'Workspace symbols' })
 
 		-- See `:help K` for why this keymap
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, desc = 'Hover documentation' })
-		vim.keymap.set('n', '<leader>k', vim.lsp.buf.signature_help,
+		vim.keymap.set('n', '<leader>lk', vim.lsp.buf.signature_help,
 			{ buffer = bufnr, desc = 'Signature documentation' })
 
 		-- Lesser used LSP functionality
-		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = 'Goto declaration' })
-		vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
-			{ buffer = bufnr, desc = 'Workspace add folder' })
-		vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
-			{ buffer = bufnr, desc = 'Workspace remove folder' })
-		vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-			{ buffer = bufnr, desc = 'Workspace list folders' })
+		-- vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
+		-- 	{ buffer = bufnr, desc = 'Workspace add folder' })
+		-- vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
+		-- 	{ buffer = bufnr, desc = 'Workspace remove folder' })
+		-- vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+		-- 	{ buffer = bufnr, desc = 'Workspace list folders' })
 	end
 }
