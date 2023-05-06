@@ -1,6 +1,8 @@
 ---------------------------------------
 -- Color Scheme
 ---------------------------------------
--- Transparency
-vim.cmd [[autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE]]
+
+-- remove tildes from end of buffer
+vim.opt.fillchars = { eob = ' ' }
+
 vim.cmd.colorscheme('gruvbox')

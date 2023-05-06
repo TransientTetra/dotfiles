@@ -26,9 +26,9 @@
 - folding
 - fix diagnostics icons
 - underline errors with red wavy line
-- pretty lazy and mason windows (w/ transparency)
-- transparent notify windows
-- fix terminal breaking transparency
+- improve transparency - tabline; gitsigns; bold text?
+- prettify lazy and mason windows - borders
 - dap
 - git keymaps
+- ui keymaps
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc
