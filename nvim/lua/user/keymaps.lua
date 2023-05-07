@@ -130,6 +130,12 @@ if IsAvailable('toggleterm.nvim') then
 	vim.keymap.set('t', '<C-l>', '<cmd>wincmd l<cr>', { desc = 'Terminal right window navigation' })
 end
 
+-- UI
+if IsAvailable('transparent.nvim') then
+	vim.keymap.set('n', '<leader>ut', '<cmd>TransparentToggle<cr>', { desc = 'Toggle transparency' })
+end
+-- vim.keymap.set('n', '<leader>ud', '', {desc = 'Toggle diagnostics'})
+
 return {
 	lspKeymaps = function(bufnr)
 		vim.keymap.set({ 'n', 'x' }, '<leader>lf',
