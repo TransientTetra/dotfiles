@@ -5,8 +5,15 @@ return {
 		'VonHeikemen/lsp-zero.nvim',
 		dependencies = {
 			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },    -- Required
-			{ 'williamboman/mason.nvim' },  -- Optional
+			{ 'neovim/nvim-lspconfig' }, -- Required
+			{
+				'williamboman/mason.nvim',
+				opts = {
+					ui = {
+						border = 'rounded',
+					},
+				},
+			},                              -- Optional
 			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
 			-- Autocompletion
@@ -44,8 +51,8 @@ return {
 			})
 			local cmp = require('cmp')
 			local border_opts = {
-				border = "single",
-				winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+				border = 'rounded',
+				winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
 			}
 			cmp.setup({
 				mapping = {
@@ -55,10 +62,10 @@ return {
 					format = require('lspkind').cmp_format()
 				},
 				sources = cmp.config.sources {
-					{ name = "nvim_lsp", priority = 1000 },
-					{ name = "luasnip",  priority = 750 },
-					{ name = "buffer",   priority = 500 },
-					{ name = "path",     priority = 250 },
+					{ name = 'nvim_lsp', priority = 1000 },
+					{ name = 'luasnip',  priority = 750 },
+					{ name = 'buffer',   priority = 500 },
+					{ name = 'path',     priority = 250 },
 				},
 				window = {
 					completion = cmp.config.window.bordered(border_opts),

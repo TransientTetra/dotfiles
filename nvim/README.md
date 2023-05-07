@@ -27,7 +27,8 @@
 - fix diagnostics icons
 - underline errors with red wavy line
 - improve transparency - tabline; gitsigns; bold text?
-- prettify lazy and mason windows - borders
+- prettify diagnostics float and whichkey - borders
+- improve lspkind icons - diff colors, before name? (see astronvim); refactor how cmp is configured in lsp.lua
 - dap
 - git keymaps
 - ui keymaps
