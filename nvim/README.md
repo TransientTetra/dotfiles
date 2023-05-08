@@ -19,6 +19,8 @@
 	- vcs.lua - version control plugins config
 
 # Neovim todo list
+- disable whichkey groups when plugin not available (or lsp not connected)
+- add keymaps for mason and lazy under p group
 - autopairs to auto select first
 - neotree instead of nvimtree
 - heirline instead of bufferline and lualine
