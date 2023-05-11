@@ -145,12 +145,22 @@ return {
 		vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename' })
 		vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { buffer = bufnr, desc = 'Code action' })
 
-		vim.keymap.set('n', '<leader>ld', vim.lsp.buf.declaration, { buffer = bufnr, desc = 'Goto declaration' })
-		vim.keymap.set('n', '<leader>lD', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Goto definition' })
+		vim.keymap.set('n', '<leader>lD', vim.lsp.buf.declaration, { buffer = bufnr, desc = 'Goto declaration' })
+		vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Goto definition' })
 		vim.keymap.set('n', '<leader>lR', require('telescope.builtin').lsp_references,
 			{ buffer = bufnr, desc = 'Goto references' })
 		vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, { buffer = bufnr, desc = 'Goto implementation' })
 		vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, { buffer = bufnr, desc = 'Type definition' })
+
+		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = 'Goto declaration' })
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Goto definition' })
+		vim.keymap.set('n', 'gR', require('telescope.builtin').lsp_references,
+			{ buffer = bufnr, desc = 'Goto references' })
+		vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
+			{ buffer = bufnr, desc = 'Goto references' })
+		vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = bufnr, desc = 'Goto implementation' })
+		vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { buffer = bufnr, desc = 'Type definition' })
+
 		vim.keymap.set('n', '<leader>ls', require('telescope.builtin').lsp_document_symbols,
 			{ buffer = bufnr, desc = 'Document symbols' })
 		vim.keymap.set('n', '<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols,
