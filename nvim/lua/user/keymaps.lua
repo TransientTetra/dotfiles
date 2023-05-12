@@ -3,8 +3,10 @@
 ---------------------------------------
 -- General
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', { desc = 'Save' })
-vim.keymap.set('n', '<leader>w', '<cmd>write<cr>', { desc = 'Save' })
+vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', { desc = 'Save current' })
+vim.keymap.set('n', '<C-a>', '<cmd>wa<cr>', { desc = 'Save all' })
+vim.keymap.set('n', '<leader>w', '<cmd>write<cr>', { desc = 'Save current' })
+vim.keymap.set('n', '<leader>W', '<cmd>wa<cr>', { desc = 'Save all' })
 vim.keymap.set('n', '<leader>q', '<cmd>confirm q<cr>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>]', '<cmd>bnext<cr>', { desc = 'Next tab' })
 vim.keymap.set('n', '<leader>[', '<cmd>bprev<cr>', { desc = 'Previous tab' })

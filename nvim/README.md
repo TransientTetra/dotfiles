@@ -35,3 +35,5 @@
 - git keymaps
 - ui keymaps
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc
+- add keymap under ui group to toggle between relative and absolute line numbering
+- add change tree plugin
