@@ -13,7 +13,7 @@ return {
 						border = 'rounded',
 					},
 				},
-			},                              -- Optional
+			},                  -- Optional
 			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
 			-- Autocompletion
@@ -25,7 +25,7 @@ return {
 			{ 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
 			-- Snippets
-			{ 'L3MON4D3/LuaSnip' },    -- Required
+			{ 'L3MON4D3/LuaSnip' }, -- Required
 			{ 'rafamadriz/friendly-snippets' }, -- Optional
 		},
 		config = function()
@@ -47,7 +47,9 @@ return {
 			vim.diagnostic.config({
 				virtual_text = true,
 				update_in_insert = false,
-				float = true,
+				float = {
+					border = 'rounded',
+				},
 			})
 			local cmp = require('cmp')
 			local border_opts = {

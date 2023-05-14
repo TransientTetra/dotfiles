@@ -27,7 +27,6 @@
 - fix diagnostics icons
 - underline errors with red wavy line
 - improve transparency - tabline; gitsigns; bold text?
-- prettify diagnostics float and whichkey - borders
 - improve lspkind icons - diff colors, before name? (see astronvim); refactor how cmp is configured in lsp.lua
 - dap
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc
@@ -37,3 +36,4 @@
 	- buffer keymaps
 - add change tree plugin
 - cmake project integration (overseer? replace?)
+- object, class, function view explorer (see astronvim, on the right side)
