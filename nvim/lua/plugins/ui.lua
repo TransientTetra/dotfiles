@@ -42,25 +42,6 @@ return {
 			icons = { group = vim.g.icons_enabled and '' or '+', separator = '' },
 			disable = { filetypes = { 'TelescopePrompt' } },
 		},
-		config = function(_, opts)
-			local wk_avail, wk = pcall(require, 'which-key')
-			if wk_avail then
-				wk.setup(opts)
-				wk.register({
-					f = { name = '󰍉 Find' },
-					p = { name = '󰏖 Packages' },
-					l = { name = ' LSP' },
-					u = { name = ' UI' },
-					b = { name = '󰓩 Buffers' },
-					d = { name = ' Debugger' },
-					g = { name = '󰊢 Git' },
-					s = { name = '󱂬 Session' },
-					t = { name = ' Terminal' },
-					x = { name = '󱠪 Trouble' },
-					o = { name = ' Overseer' },
-				}, { prefix = '<leader>' })
-			end
-		end
 	},
 	{
 		'onsails/lspkind.nvim',
@@ -119,7 +100,7 @@ return {
 			},
 			extra_groups = {
 				'NormalFloat'
-			}, -- table: additional groups that should be cleared
+			},          -- table: additional groups that should be cleared
 			exclude_groups = {}, -- table: groups you don't want to clear
 		}
 	},

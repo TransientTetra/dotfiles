@@ -1,6 +1,7 @@
 ---------------------------------------
 -- Keymaps
 ---------------------------------------
+local wk = require('which-key')
 -- General
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<C-s>', '<cmd>write<cr>', { desc = 'Save current' })
@@ -32,6 +33,7 @@ vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<CR>', { desc = 'Resize
 local IsAvailable = require('user.utils').IsAvailable
 -- Overseer
 if IsAvailable('overseer.nvim') then
+	wk.register({ o = { name = ' Overseer' }, }, { prefix = '<leader>' })
 	vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<cr>', { desc = 'Build tasks' })
 	vim.keymap.set('n', '<leader>ob', '<cmd>OverseerRun<cr>', { desc = 'Build tasks' })
 end
@@ -42,10 +44,11 @@ if IsAvailable('nvim-tree.lua') then
 end
 
 -- Session
-if IsAvailable('session-lens') then
-	vim.keymap.set('n', '<leader>sb', require('session-lens').search_session, { desc = 'Browse saved sessions' })
-end
 if IsAvailable('auto-session') then
+	wk.register({ s = { name = '󱂬 Session' }, }, { prefix = '<leader>' })
+	if IsAvailable('session-lens') then
+		vim.keymap.set('n', '<leader>sb', require('session-lens').search_session, { desc = 'Browse saved sessions' })
+	end
 	vim.keymap.set('n', '<leader>ss', require('auto-session').SaveSession, { desc = 'Save session' })
 	vim.keymap.set('n', '<leader>sD', require('auto-session').DeleteSession, { desc = 'Delete current session' })
 	vim.keymap.set('n', '<leader>sd', '<cmd>Autosession delete<cr>', { desc = 'Browse and delete a session' })
@@ -62,6 +65,7 @@ end
 
 -- Telescope
 if IsAvailable('telescope.nvim') then
+	wk.register({ f = { name = '󰍉 Find' }, }, { prefix = '<leader>' })
 	vim.keymap.set('n', '<leader>f?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
 	vim.keymap.set('n', '<leader>f<space>', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
 	vim.keymap.set('n', '<leader>fb', function()
@@ -80,6 +84,7 @@ end
 
 -- TroubleToggle
 if IsAvailable('trouble.nvim') then
+	wk.register({ x = { name = '󱠪 Trouble' }, }, { prefix = '<leader>' })
 	vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true })
 	vim.keymap.set('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', { silent = true, noremap = true })
 	vim.keymap.set('n', '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>', { silent = true, noremap = true })
@@ -90,6 +95,7 @@ end
 
 -- DAP
 if IsAvailable('nvim-dap') then
+	wk.register({ d = { name = ' Debugger' }, }, { prefix = '<leader>' })
 	vim.keymap.set('n', '<F5>', require('dap').continue, { desc = 'Debugger: Start' })
 	vim.keymap.set('n', '<F17>', require('dap').terminate, { desc = 'Debugger: Stop' })
 	vim.keymap.set('n', '<F29>', require('dap').restart_frame, { desc = 'Debugger: Restart' })
@@ -117,6 +123,7 @@ end
 
 -- Terminal
 if IsAvailable('toggleterm.nvim') then
+	wk.register({ t = { name = ' Terminal' }, }, { prefix = '<leader>' })
 	vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<cr>', { desc = 'ToggleTerm float' })
 	vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm size=10 direction=horizontal<cr>',
 		{ desc = 'ToggleTerm horizontal split' })
@@ -133,6 +140,7 @@ if IsAvailable('toggleterm.nvim') then
 end
 
 -- UI
+wk.register({ u = { name = ' UI' }, }, { prefix = '<leader>' })
 if IsAvailable('transparent.nvim') then
 	vim.keymap.set('n', '<leader>ut', '<cmd>TransparentToggle<cr>', { desc = 'Toggle transparency' })
 end
@@ -141,8 +149,18 @@ vim.keymap.set('n', '<leader>ur', function()
 	vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = 'Toggle relative line numbers' })
 
+-- Buffers
+-- wk.register({ b = { name = '󰓩 Buffers' }, }, { prefix = '<leader>' })
+
+-- Git
+-- wk.register({ g = { name = '󰊢 Git' }, }, { prefix = '<leader>' })
+
+-- Packages
+-- wk.register({ p = { name = '󰏖 Packages' }, }, { prefix = '<leader>' })
+
 return {
 	lspKeymaps = function(bufnr)
+		wk.register({ l = { name = ' LSP' }, }, { prefix = '<leader>' })
 		vim.keymap.set({ 'n', 'x' }, '<leader>lf',
 			function() vim.lsp.buf.format({ async = false, timeout_ms = 10000 }) end,
 			{ buffer = bufnr, desc = 'Format buffer' })
@@ -154,6 +172,7 @@ return {
 		vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Goto definition' })
 		vim.keymap.set('n', '<leader>lR', require('telescope.builtin').lsp_references,
 			{ buffer = bufnr, desc = 'Goto references' })
+
 		vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, { buffer = bufnr, desc = 'Goto implementation' })
 		vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, { buffer = bufnr, desc = 'Type definition' })
 

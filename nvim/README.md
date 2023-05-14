@@ -19,8 +19,6 @@
 	- vcs.lua - version control plugins config
 
 # Neovim todo list
-- disable whichkey groups when plugin not available (or lsp not connected)
-- add keymaps for mason and lazy under p group
 - autopairs to auto select first
 - neotree instead of nvimtree
 - heirline instead of bufferline and lualine
@@ -32,7 +30,10 @@
 - prettify diagnostics float and whichkey - borders
 - improve lspkind icons - diff colors, before name? (see astronvim); refactor how cmp is configured in lsp.lua
 - dap
-- git keymaps
-- ui keymaps
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc
+	- git keymaps
+	- ui keymaps
+	- packages keymaps
+	- buffer keymaps
 - add change tree plugin
+- cmake project integration (overseer? replace?)
