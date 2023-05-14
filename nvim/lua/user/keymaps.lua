@@ -137,6 +137,9 @@ if IsAvailable('transparent.nvim') then
 	vim.keymap.set('n', '<leader>ut', '<cmd>TransparentToggle<cr>', { desc = 'Toggle transparency' })
 end
 -- vim.keymap.set('n', '<leader>ud', '', {desc = 'Toggle diagnostics'})
+vim.keymap.set('n', '<leader>ur', function()
+	vim.wo.relativenumber = not vim.wo.relativenumber
+end, { desc = 'Toggle relative line numbers' })
 
 return {
 	lspKeymaps = function(bufnr)
