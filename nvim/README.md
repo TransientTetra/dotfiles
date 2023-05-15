@@ -26,14 +26,19 @@
 - folding
 - fix diagnostics icons
 - underline errors with red wavy line
-- improve transparency - tabline; gitsigns; bold text?
+- improve transparency - tabline; gitsigns; bold text?; session lens window; some telescope windows
 - improve lspkind icons - diff colors, before name? (see astronvim); refactor how cmp is configured in lsp.lua
 - dap
+	- cmake project integration (overseer? replace?)
+	- integrated test results, running
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc
 	- git keymaps
 	- ui keymaps
 	- packages keymaps
 	- buffer keymaps
 - add change tree plugin
-- cmake project integration (overseer? replace?)
 - object, class, function view explorer (see astronvim, on the right side)
+- fix snippets not working
+- add keymap for highlighting all occurences of word under cursor
+- enable telescope to show hidden files
+- add keymap for toggling diagnostic severity
