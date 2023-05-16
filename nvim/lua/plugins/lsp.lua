@@ -13,7 +13,7 @@ return {
 						border = 'rounded',
 					},
 				},
-			},                  -- Optional
+			},                              -- Optional
 			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
 			-- Autocompletion
@@ -25,7 +25,7 @@ return {
 			{ 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
 			-- Snippets
-			{ 'L3MON4D3/LuaSnip' }, -- Required
+			{ 'L3MON4D3/LuaSnip' },    -- Required
 			{ 'rafamadriz/friendly-snippets' }, -- Optional
 		},
 		config = function()
@@ -42,6 +42,12 @@ return {
 			lsp.on_attach(function(_, bufnr)
 				require('user.keymaps').lspKeymaps(bufnr)
 			end)
+			lsp.set_sign_icons({
+				error = '',
+				warn = '',
+				hint = '',
+				info = ''
+			})
 			lsp.nvim_workspace()
 			lsp.setup()
 			vim.diagnostic.config({

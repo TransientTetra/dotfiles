@@ -24,7 +24,6 @@
 - heirline instead of bufferline and lualine
 - closing buffers switches to another buffer, not filetree
 - folding
-- fix diagnostics icons
 - improve transparency - tabline; gitsigns; bold text?; session lens window; some telescope windows
 - improve lspkind icons - diff colors, before name? (see astronvim); refactor how cmp is configured in lsp.lua
 - dap
@@ -38,6 +37,5 @@
 - add change tree plugin
 - object, class, function view explorer (see astronvim, on the right side)
 - fix snippets not working
-- add keymap for highlighting all occurences of word under cursor
 - enable telescope to show hidden files
 - add keymap for toggling diagnostic severity
