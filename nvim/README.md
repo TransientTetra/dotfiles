@@ -25,7 +25,6 @@
 - closing buffers switches to another buffer, not filetree
 - folding
 - fix diagnostics icons
-- underline errors with red wavy line
 - improve transparency - tabline; gitsigns; bold text?; session lens window; some telescope windows
 - improve lspkind icons - diff colors, before name? (see astronvim); refactor how cmp is configured in lsp.lua
 - dap

@@ -19,6 +19,11 @@ return {
 						n = { ['q'] = actions.close },
 					},
 				},
+				pickers = {
+					colorscheme = {
+						enable_preview = true,
+					},
+				},
 			})
 		end
 	},

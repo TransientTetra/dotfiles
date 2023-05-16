@@ -148,6 +148,9 @@ end
 vim.keymap.set('n', '<leader>ur', function()
 	vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = 'Toggle relative line numbers' })
+if IsAvailable('telescope.nvim') then
+	vim.keymap.set('n', '<leader>uC', '<cmd>Telescope colorscheme<cr>', { desc = 'Colorscheme picker' })
+end
 
 -- Buffers
 -- wk.register({ b = { name = '󰓩 Buffers' }, }, { prefix = '<leader>' })

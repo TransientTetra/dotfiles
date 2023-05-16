@@ -1,5 +1,13 @@
 return {
 	'morhetz/gruvbox',
+	'catppuccin/nvim',
+	'rebelot/kanagawa.nvim',
+	'folke/tokyonight.nvim',
+	'sainnhe/everforest',
+	'navarasu/onedark.nvim',
+	'shaunsingh/nord.nvim',
+	'junegunn/seoul256.vim',
+	'Mofiqul/vscode.nvim',
 	{
 		'akinsho/bufferline.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
