@@ -36,6 +36,4 @@
 	- buffer keymaps
 - add change tree plugin
 - object, class, function view explorer (see astronvim, on the right side)
-- fix snippets not working
-- enable telescope to show hidden files
 - add keymap for toggling diagnostic severity
