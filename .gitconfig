@@ -1,6 +1,6 @@
 [alias]
 	c = commit -am
-	fpush = push --force
+	fpush = push --force-with-lease
 	s = status
 	sclone = clone --depth=1
 	rclone = clone --recurse-submodules

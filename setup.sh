@@ -28,6 +28,7 @@ rsync
 samba
 smbclient
 tmux
+tree
 unrar
 unzip
 vim

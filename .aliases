@@ -20,3 +20,13 @@ alias vi=nvim
 alias vim=nvim
 
 alias gs="git status"
+alias st=gs
+alias status=gs
+
+alias gf="git diff --color --color-words --abbrev"
+alias df=gf
+alias diff=gf
+
+alias gl="git log"
+alias lg=gl
+alias log=gl
