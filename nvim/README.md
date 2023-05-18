@@ -24,7 +24,7 @@
 - heirline instead of bufferline and lualine
 - closing buffers switches to another buffer, not filetree
 - folding
-- improve transparency - tabline; gitsigns; bold text?; session lens window; some telescope windows
+- improve transparency - session lens window; some telescope windows; add border to lspinfo
 - improve lspkind icons - diff colors, before name? (see astronvim); refactor how cmp is configured in lsp.lua
 - dap
 	- cmake project integration (overseer? replace?)

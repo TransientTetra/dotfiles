@@ -110,7 +110,7 @@ return {
 				'SignColumn', 'CursorLineNr', 'EndOfBuffer', 'Folded', 'SpecialKey', 'VertSplit', 'EndOfFile',
 			},
 			extra_groups = {
-				'NormalFloat'
+				'NormalFloat', 'NvimTreeNormal', 'BufferLineTab', "GitGutterAdd", "GitGutterChange", "GitGutterDelete",
 			},          -- table: additional groups that should be cleared
 			exclude_groups = {}, -- table: groups you don't want to clear
 		}
