@@ -31,7 +31,7 @@ return {
 				component_separators = '|',
 				section_separators = { left = '', right = '' },
 			},
-			sections = { lualine_c = { require('auto-session-library').current_session_name } },
+			sections = { lualine_c = { require('auto-session.lib').current_session_name } },
 		}
 	},
 	{ 'lukas-reineke/indent-blankline.nvim', opts = {} },

@@ -27,7 +27,6 @@
 - improve transparency - session lens window; some telescope windows; add border to lspinfo
 - improve lspkind icons - diff colors, before name? (see astronvim); refactor how cmp is configured in lsp.lua
 - dap
-	- cmake project integration (overseer? replace?)
 	- integrated test results, running
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc
 	- git keymaps
@@ -37,3 +36,4 @@
 - add change tree plugin
 - object, class, function view explorer (see astronvim, on the right side)
 - add keymap for toggling diagnostic severity
+- improve Tasks usage - only show menu when cmake project detected; do sth about it opening new buffer to show status

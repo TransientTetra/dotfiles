@@ -32,11 +32,17 @@ vim.keymap.set('n', '<C-Left>', '<cmd>vertical resize -2<CR>', { desc = 'Resize 
 vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<CR>', { desc = 'Resize split right' })
 
 local IsAvailable = require('user.utils').IsAvailable
--- Overseer
-if IsAvailable('overseer.nvim') then
-	wk.register({ o = { name = ' Overseer' }, }, { prefix = '<leader>' })
-	vim.keymap.set('n', '<C-b>', '<cmd>OverseerRun<cr>', { desc = 'Build tasks' })
-	vim.keymap.set('n', '<leader>ob', '<cmd>OverseerRun<cr>', { desc = 'Build tasks' })
+-- Build tasks
+if IsAvailable('neovim-tasks') then
+	wk.register({ b = { name = '󱌣 Build' }, }, { prefix = '<leader>' })
+	vim.keymap.set('n', '<C-b>', '<cmd>Task start cmake build_all<cr>', { desc = 'Build all' })
+	vim.keymap.set('n', '<leader>bb', '<cmd>Task start cmake build_all<cr>', { desc = 'Build all' })
+	vim.keymap.set('n', '<leader>bB', '<cmd>Task start cmake build<cr>', { desc = 'Build selected target' })
+	vim.keymap.set('n', '<leader>bc', '<cmd>Task start cmake configure<cr>', { desc = 'CMake configure' })
+	vim.keymap.set('n', '<leader>bt', '<cmd>Task set_module_param cmake target<cr>', { desc = 'Select build target' })
+	vim.keymap.set('n', '<leader>bC', '<cmd>Task start cmake clean<cr>', { desc = 'Clean' })
+	vim.keymap.set('n', '<leader>br', '<cmd>Task start cmake run<cr>', { desc = 'Run' })
+	vim.keymap.set('n', '<leader>bd', '<cmd>Task start cmake debug<cr>', { desc = 'Debug' })
 end
 
 -- File explorer
@@ -47,9 +53,8 @@ end
 -- Session
 if IsAvailable('auto-session') then
 	wk.register({ s = { name = '󱂬 Session' }, }, { prefix = '<leader>' })
-	if IsAvailable('session-lens') then
-		vim.keymap.set('n', '<leader>sb', require('session-lens').search_session, { desc = 'Browse saved sessions' })
-	end
+	vim.keymap.set('n', '<leader>sb', require('auto-session.session-lens').search_session,
+		{ desc = 'Browse saved sessions' })
 	vim.keymap.set('n', '<leader>ss', require('auto-session').SaveSession, { desc = 'Save session' })
 	vim.keymap.set('n', '<leader>sD', require('auto-session').DeleteSession, { desc = 'Delete current session' })
 	vim.keymap.set('n', '<leader>sd', '<cmd>Autosession delete<cr>', { desc = 'Browse and delete a session' })
@@ -168,7 +173,7 @@ end
 
 return {
 	lspKeymaps = function(bufnr)
-		wk.register({ l = { name = ' LSP' }, }, { prefix = '<leader>' })
+		wk.register({ l = { name = '󰉀 LSP' }, }, { prefix = '<leader>' })
 		vim.keymap.set({ 'n', 'x' }, '<leader>lf',
 			function() vim.lsp.buf.format({ async = false, timeout_ms = 10000 }) end,
 			{ buffer = bufnr, desc = 'Format buffer' })
