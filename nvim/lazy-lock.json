@@ -43,6 +43,7 @@
   "scope.nvim": { "branch": "main", "commit": "066bdcf97a8634560428241c9176b9e6ef038055" },
   "seoul256.vim": { "branch": "master", "commit": "b21c9e63f7c2d543db8b34a393a0b42ec7e9b891" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "580b6c48651cabb63455e97d7e131ed557b8c7e2" },
+  "telescope-undo.nvim": { "branch": "main", "commit": "231b5ebb4328d2768c830c9a8d1b9c696116848d" },
   "telescope.nvim": { "branch": "master", "commit": "40c31fdde93bcd85aeb3447bb3e2a3208395a868" },
   "toggleterm.nvim": { "branch": "main", "commit": "26f16d3bab1761d0d11117a8e431faba11a1b865" },
   "tokyonight.nvim": { "branch": "main", "commit": "029dca9a40260788d495929d8cc83a9a8ebb6763" },

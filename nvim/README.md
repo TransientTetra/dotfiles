@@ -32,7 +32,6 @@
 	- git keymaps
 	- ui keymaps
 	- buffer keymaps
-- add change tree plugin
 - object, class, function view explorer (see astronvim, on the right side)
 - add keymap for toggling diagnostic severity
 - improve Tasks usage - only show menu when cmake project detected; do sth about it opening new buffer to show status

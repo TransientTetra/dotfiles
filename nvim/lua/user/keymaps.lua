@@ -88,6 +88,9 @@ if IsAvailable('telescope.nvim') then
 	vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = 'Find current word' })
 	vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Find by grep' })
 	vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = 'Find diagnostics' })
+	if IsAvailable('telescope-undo.nvim') then
+		vim.keymap.set('n', '<leader>fu', '<cmd>Telescope undo<cr>', { desc = 'Find undo history' })
+	end
 end
 
 -- TroubleToggle
