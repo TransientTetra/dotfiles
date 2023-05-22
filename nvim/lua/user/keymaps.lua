@@ -169,7 +169,13 @@ end
 -- wk.register({ g = { name = '󰊢 Git' }, }, { prefix = '<leader>' })
 
 -- Packages
--- wk.register({ p = { name = '󰏖 Packages' }, }, { prefix = '<leader>' })
+wk.register({ P = { name = '󰏖 Packages' }, }, { prefix = '<leader>' })
+if IsAvailable('lazy.nvim') then
+	vim.keymap.set('n', '<leader>Pp', '<cmd>Lazy<cr>', { desc = 'Package manager' })
+end
+if IsAvailable('mason.nvim') then
+	vim.keymap.set('n', '<leader>Pl', '<cmd>Mason<cr>', { desc = 'LSP manager' })
+end
 
 return {
 	lspKeymaps = function(bufnr)

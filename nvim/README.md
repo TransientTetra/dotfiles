@@ -31,7 +31,6 @@
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc
 	- git keymaps
 	- ui keymaps
-	- packages keymaps
 	- buffer keymaps
 - add change tree plugin
 - object, class, function view explorer (see astronvim, on the right side)
