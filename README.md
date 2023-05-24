@@ -9,3 +9,7 @@ Alternatively, using curl:
 ```
 curl https://raw.githubusercontent.com/TransientTetra/dotfiles/master/setup.sh -o - | sh
 ```
+# Todo
+- Add nerd font download and install to setup script
+- Add kitty terminal config
+- Add sway config
