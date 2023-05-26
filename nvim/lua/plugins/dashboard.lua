@@ -93,7 +93,7 @@ return {
 		-- }
 		dashboard.section.buttons.val = {
 			dashboard.button('l', '  Last Session', '<cmd>lua require(\'user.utils\').RestoreLatestSession()<cr>'),
-			dashboard.button('s', '  Saved Sessions', '<cmd>lua require(\'session-lens\').search_session()<cr>'),
+			dashboard.button('s', '  Saved Sessions', '<cmd>lua require(\'auto-session.session-lens\').search_session()<cr>'),
 			dashboard.button('n', '  New file', '<cmd>ene <BAR> startinsert <cr>'),
 			dashboard.button('f', '  Find File', '<cmd>Telescope find_files<cr>'),
 			dashboard.button('w', '  Find Word', '<cmd>Telescope live_grep<cr>'),
