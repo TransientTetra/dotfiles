@@ -29,3 +29,4 @@ sudo apt install -y $LIST_OF_APPS
 
 ln -s ~/Projects/dotfiles/i3 ~/.config/i3
 ln -s ~/Projects/dotfiles/sway ~/.config/sway
+ln -s ~/Projects/dotfiles/kitty/ ~/.config/kitty
