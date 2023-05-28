@@ -14,11 +14,11 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu j4-dmenu-desktop | xargs swaymsg exec --
 
 include /etc/sway/config-vars.d/*
 
@@ -49,13 +49,11 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 ### Input configuration
 #
 # Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
+#1133:49284:Logitech_G102_Prodigy_Gaming_Mouse_Keyboard
+input type:pointer {
+    accel_profile flat
+    pointer_accel 0
+}
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -69,6 +67,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # Kill focused window
     bindsym $mod+Shift+q kill
+    bindsym Ctrl+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -83,8 +82,6 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -181,16 +178,16 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $left resize shrink width 20px
+    bindsym $down resize grow height 20px
+    bindsym $up resize shrink height 20px
+    bindsym $right resize grow width 20px
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym Left resize shrink width 20px
+    bindsym Down resize grow height 20px
+    bindsym Up resize shrink height 20px
+    bindsym Right resize grow width 20px
 
     # Return to default mode
     bindsym Return mode "default"
@@ -199,11 +196,29 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Exit menu
+#
+set $wmexit     swaymsg exit
+
+set $Exit-menu  System (e) exit, (s) suspend, (r) reboot, (q) shutdown
+mode "$Exit-menu" {
+    bindsym e       exec --no-startup-id $wmexit,               mode "default"
+    bindsym s       exec --no-startup-id systemctl suspend,     mode "default"
+    bindsym r       exec --no-startup-id systemctl reboot,      mode "default"
+    bindsym q       exec --no-startup-id systemctl poweroff,mode "default"
+
+    bindsym Return  mode "default"
+    bindsym Escape  mode "default"
+}
+
+bindsym $mod+Escape          mode "$Exit-menu"
+
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -217,3 +232,6 @@ bar {
 }
 
 include /etc/sway/config.d/*
+gaps inner 32
+default_border pixel
+default_floating_border pixel
