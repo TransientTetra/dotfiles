@@ -20,6 +20,9 @@ set $term kitty
 # on the original workspace that the command was run on.
 set $menu j4-dmenu-desktop | xargs swaymsg exec --
 
+set $music_player $term cmus &
+set $file_explorer nautilus
+
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
@@ -71,6 +74,12 @@ input type:pointer {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # Start music player
+    bindsym $mod+c exec $music_player
+
+    # Start file explorer
+    bindsym $mod+o exec $file_explorer
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -232,6 +241,7 @@ bar {
 }
 
 include /etc/sway/config.d/*
+
 gaps inner 32
 default_border pixel
 default_floating_border pixel
