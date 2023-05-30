@@ -155,7 +155,7 @@ wk.register({ u = { name = ' UI' }, }, { prefix = '<leader>' })
 if IsAvailable('transparent.nvim') then
 	vim.keymap.set('n', '<leader>ut', '<cmd>TransparentToggle<cr>', { desc = 'Toggle transparency' })
 end
--- vim.keymap.set('n', '<leader>ud', '', {desc = 'Toggle diagnostics'})
+-- vim.keymap.set('n', '<leader>uD', '', {desc = 'Toggle diagnostics'})
 vim.keymap.set('n', '<leader>ur', function()
 	vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = 'Toggle relative line numbers' })
@@ -163,6 +163,9 @@ vim.keymap.set('n', '<leader>uh', function() vim.o.hlsearch = not vim.o.hlsearch
 	{ desc = 'Toggle search highlight' })
 if IsAvailable('telescope.nvim') then
 	vim.keymap.set('n', '<leader>uC', '<cmd>Telescope colorscheme<cr>', { desc = 'Colorscheme picker' })
+end
+if IsAvailable('nvim-dap-ui') then
+	vim.keymap.set('n', '<leader>ud', require('dapui').toggle, { desc = 'Toggle Debugger UI' })
 end
 
 -- Buffers
