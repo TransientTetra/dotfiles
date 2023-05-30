@@ -246,3 +246,7 @@ gaps inner 32
 default_border pixel
 default_floating_border pixel
 output * bg #009999 solid_color
+
+# Set your own wallpaper, create ~/.swaybg and put below command in it
+# output * bg /path/to/wallpaper.png fill
+include ~/.swaybg 
