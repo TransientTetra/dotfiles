@@ -16,6 +16,7 @@ vim.keymap.set('i', '<C-j>', '<down>', { desc = 'Move cursor down' })
 vim.keymap.set('i', '<C-k>', '<up>', { desc = 'Move cursor up' })
 vim.keymap.set('i', '<C-l>', '<right>', { desc = 'Move cursor right' })
 vim.keymap.set('n', '<leader>h', '*N', { desc = 'Highlight all occurrences of word under cursor' })
+vim.keymap.set('n', '<leader>r', '<cmd>edit<cr>', { desc = 'Refresh current' })
 
 -- Splits
 vim.keymap.set('n', '|', '<cmd>vsplit<cr>', { desc = 'Vertical split' })
