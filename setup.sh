@@ -3,6 +3,7 @@
 LIST_OF_APPS="
 bash
 clang
+cmus
 coreutils
 fdisk
 ffmpeg
@@ -34,7 +35,8 @@ unzip
 vim
 w3m
 wget
-xsel
+wl-clipboard
+youtube-dl
 zip
 zsh
 zsh-autosuggestions
@@ -64,6 +66,7 @@ sudo chsh -s $(which zsh) $USER_
 mkdir -p ~/.cache/zsh
 touch ~/.cache/zsh/history
 
+mkdir -p ~/Temp
 mkdir -p ~/Projects
 git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/TransientTetra/dotfiles.git ~/Projects/dotfiles/
 mkdir -p ~/.config
