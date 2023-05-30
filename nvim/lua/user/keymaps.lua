@@ -41,7 +41,7 @@ if IsAvailable('cmake-tools.nvim') then
 	vim.keymap.set('n', '<leader>bB', '<cmd>CMakeBuild<cr>', { desc = 'Build selected target' })
 	vim.keymap.set('n', '<leader>bc', '<cmd>CMakeGenerate<cr>', { desc = 'CMake configure' })
 	vim.keymap.set('n', '<leader>bt', '<cmd>CMakeSelectBuildTarget<cr>', { desc = 'Select build target' })
-	vim.keymap.set('n', '<leader>bT', '<cmd>CMakeBuildType<cr>', { desc = 'Select build type' })
+	vim.keymap.set('n', '<leader>bT', '<cmd>CMakeSelectBuildType<cr>', { desc = 'Select build type' })
 	vim.keymap.set('n', '<leader>bC', '<cmd>CMakeClean<cr>', { desc = 'Clean' })
 	vim.keymap.set('n', '<leader>br', '<cmd>CMakeRun<cr>', { desc = 'Run' })
 	vim.keymap.set('n', '<leader>bd', '<cmd>CMakeDebug<cr>', { desc = 'Debug' })
@@ -93,6 +93,10 @@ if IsAvailable('telescope.nvim') then
 	vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = 'Find diagnostics' })
 	if IsAvailable('telescope-undo.nvim') then
 		vim.keymap.set('n', '<leader>fu', '<cmd>Telescope undo<cr>', { desc = 'Find undo history' })
+	end
+	if IsAvailable('auto-session') then
+		vim.keymap.set('n', '<leader>fs', require('auto-session.session-lens').search_session,
+			{ desc = 'Browse saved sessions' })
 	end
 end
 
