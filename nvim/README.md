@@ -29,12 +29,15 @@
 - dap
 	- integrated test results, running
 	- integrate Tasks
-	- icons (breakpoints etc)
+	- auto toggle dap ui
+	- save breakpoints to session
+	- breakpoint icons lack color with transparency on
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc
 	- git keymaps
 	- ui keymaps
 	- buffer keymaps
 - object, class, function view explorer (see astronvim, on the right side)
 - add keymap for toggling diagnostic severity
-- improve Tasks usage - only show menu when cmake project detected; do sth about it opening new buffer to show status
+- improve Tasks usage - only show menu when cmake project detected; do sth about it opening new buffer to show status (dispatch?)
 - improve undo find plugin or change to another plugin (undotree?)
+- persist settings for color theme, ui settings (eg relative lines, diag severity) etc
