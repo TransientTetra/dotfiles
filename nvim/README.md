@@ -28,6 +28,8 @@
 - improve lspkind icons - diff colors, before name? (see astronvim); refactor how cmp is configured in lsp.lua
 - dap
 	- integrated test results, running
+	- integrate Tasks
+	- icons (breakpoints etc)
 - nice and organized keymaps like in astronvim + icons; remove unused from treesitter, telescope etc
 	- git keymaps
 	- ui keymaps
