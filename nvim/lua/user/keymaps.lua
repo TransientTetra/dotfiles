@@ -33,16 +33,18 @@ vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<CR>', { desc = 'Resize
 
 local IsAvailable = require('user.utils').IsAvailable
 -- Build tasks
-if IsAvailable('neovim-tasks') then
+if IsAvailable('cmake-tools.nvim') then
 	wk.register({ b = { name = '󱌣 Build' }, }, { prefix = '<leader>' })
-	vim.keymap.set('n', '<C-b>', '<cmd>Task start cmake build_all<cr>', { desc = 'Build all' })
-	vim.keymap.set('n', '<leader>bb', '<cmd>Task start cmake build_all<cr>', { desc = 'Build all' })
-	vim.keymap.set('n', '<leader>bB', '<cmd>Task start cmake build<cr>', { desc = 'Build selected target' })
-	vim.keymap.set('n', '<leader>bc', '<cmd>Task start cmake configure<cr>', { desc = 'CMake configure' })
-	vim.keymap.set('n', '<leader>bt', '<cmd>Task set_module_param cmake target<cr>', { desc = 'Select build target' })
-	vim.keymap.set('n', '<leader>bC', '<cmd>Task start cmake clean<cr>', { desc = 'Clean' })
-	vim.keymap.set('n', '<leader>br', '<cmd>Task start cmake run<cr>', { desc = 'Run' })
-	vim.keymap.set('n', '<leader>bd', '<cmd>Task start cmake debug<cr>', { desc = 'Debug' })
+	vim.keymap.set('n', '<C-b>', '<cmd>CMakeBuild all<cr>', { desc = 'Build all' })
+	vim.keymap.set('n', '<leader>bb', '<cmd>CMakeBuild all<cr>', { desc = 'Build all' })
+	vim.keymap.set('n', '<leader>bB', '<cmd>CMakeBuild<cr>', { desc = 'Build selected target' })
+	vim.keymap.set('n', '<leader>bc', '<cmd>CMakeGenerate<cr>', { desc = 'CMake configure' })
+	vim.keymap.set('n', '<leader>bt', '<cmd>CMakeSelectBuildTarget<cr>', { desc = 'Select build target' })
+	vim.keymap.set('n', '<leader>bT', '<cmd>CMakeBuildType<cr>', { desc = 'Select build type' })
+	vim.keymap.set('n', '<leader>bC', '<cmd>CMakeClean<cr>', { desc = 'Clean' })
+	vim.keymap.set('n', '<leader>br', '<cmd>CMakeRun<cr>', { desc = 'Run' })
+	vim.keymap.set('n', '<leader>bd', '<cmd>CMakeDebug<cr>', { desc = 'Debug' })
+	vim.keymap.set('n', '<leader>bS', '<cmd>CMakeStop<cr>', { desc = 'Stop' })
 end
 
 -- File explorer
