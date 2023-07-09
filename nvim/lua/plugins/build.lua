@@ -5,7 +5,8 @@ return {
 			'nvim-lua/plenary.nvim'
 		},
 		opts = {
-			cmake_build_directory_prefix = 'cmake-build-',
+			cmake_build_directory = 'build',
+			-- cmake_build_directory_prefix = 'cmake-build-',
 			cmake_soft_link_compile_commands = false,
 		}
 	}
