@@ -1,6 +1,7 @@
 #!/bin/sh
 
 LIST_OF_APPS="
+libssl-dev
 bash
 clang
 cmus
@@ -55,7 +56,7 @@ git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com
 chmod 700 ~/Projects/CMake/bootstrap
 (cd ~/Projects/CMake && ./bootstrap && make -j $NPROC -C ~/Projects/CMake && sudo make -j $NPROC -C ~/Projects/CMake install)
 
-git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/neovim/neovim.git ~/Projects/neovim
+git clone --branch release-0.9 --recurse-submodules --depth 1 --shallow-submodules https://github.com/neovim/neovim.git ~/Projects/neovim
 (cd ~/Projects/neovim && make -j $NPROC CMAKE_BUILD_TYPE=Release -C ~/Projects/neovim)
 (cd ~/Projects/neovim && sudo make -j $NPROC -C ~/Projects/neovim install)
 
