@@ -1,9 +1,9 @@
 #!/bin/sh
 
 LIST_OF_APPS="
-libssl-dev
 bash
 clang
+clangd
 cmus
 coreutils
 fdisk
@@ -18,8 +18,12 @@ git
 grep
 ripgrep
 gzip
+libssl-dev
+lldb
+luarocks
 make
 neofetch
+openssl
 p7zip
 parted
 python3
