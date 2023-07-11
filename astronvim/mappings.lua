@@ -11,7 +11,9 @@ return {
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
@@ -20,9 +22,35 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<leader>]"] = { "<cmd>bnext<cr>", desc = "Next tab" },
+    ["<leader>["] = { "<cmd>bprev<cr>", desc = "Previous tab" },
+    ["<C-_>"] = { "gcc", desc = "Toggle line comment", remap = true },
+    ["<leader>/"] = { "gcc", desc = "Toggle line comment", remap = true },
+
+    ["<leader>B"] = { name = "󱌣 Build" },
+    ["<C-b>"] = { "<cmd>CMakeBuild all<cr>", desc = "Build all" },
+    ["<leader>Bb"] = { "<cmd>CMakeBuild all<cr>", desc = "Build all" },
+    ["<leader>BB"] = { "<cmd>CMakeBuild<cr>", desc = "Build selected target" },
+    ["<leader>Bc"] = { "<cmd>CMakeGenerate<cr>", desc = "CMake configure" },
+    ["<leader>Bt"] = { "<cmd>CMakeSelectBuildTarget<cr>", desc = "Select build target" },
+    ["<leader>BT"] = { "<cmd>CMakeSelectBuildType<cr>", desc = "Select build type" },
+    ["<leader>BC"] = { "<cmd>CMakeClean<cr>", desc = "Clean" },
+    ["<leader>Br"] = { "<cmd>CMakeRun<cr>", desc = "Run" },
+    ["<leader>Bd"] = { "<cmd>CMakeDebug<cr>", desc = "Debug" },
+    ["<leader>BS"] = { "<cmd>CMakeStop<cr>", desc = "Stop" },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
+  },
+  v = {
+    ["<C-_>"] = { "gc", desc = "Toggle line comment", remap = true },
+    ["<leader>/"] = { "gc", desc = "Toggle line comment", remap = true },
+  },
+  i = {
+    ["<C-h>"] = { "<left>", desc = "Move cursor left" },
+    ["<C-j>"] = { "<down>", desc = "Move cursor down" },
+    ["<C-k>"] = { "<up>", desc = "Move cursor up" },
+    ["<C-l>"] = { "<right>", desc = "Move cursor right" },
   },
 }
