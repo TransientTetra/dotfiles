@@ -80,5 +80,10 @@ ln -s ~/Projects/dotfiles/.vimrc ~/.vimrc
 ln -s ~/Projects/dotfiles/.zshrc ~/.zshrc
 ln -s ~/Projects/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/Projects/dotfiles/.aliases ~/.aliases
-ln -s ~/Projects/dotfiles/nvim ~/.config/nvim
+# ln -s ~/Projects/dotfiles/nvim ~/.config/nvim
+
+# AstroNvim
+git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+ln -s ~/Projects/dotfiles/astronvim/ ~/.config/nvim/lua/user
+nvim --headless -c 'quitall'
 
