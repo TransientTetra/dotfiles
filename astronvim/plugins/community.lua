@@ -15,6 +15,7 @@ return {
 --  { import = "astrocommunity.pack.proto" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.java" },
+  { import = "astrocommunity.pack.kotlin" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.lua" },
 }

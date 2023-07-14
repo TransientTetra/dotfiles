@@ -2,6 +2,7 @@
 
 LIST_OF_APPS="
 bash
+cargo
 clang
 clangd
 cmus
@@ -31,6 +32,7 @@ python3-pip
 python3-venv
 python3-virtualenv
 rsync
+rust-all
 samba
 smbclient
 tmux
