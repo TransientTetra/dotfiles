@@ -9,13 +9,10 @@ return {
   { import = "astrocommunity.colorscheme.gruvbox-nvim" },
   { import = "astrocommunity.colorscheme.everforest" },
   { import = "astrocommunity.colorscheme.onedarkpro-nvim" },
-  { import = "astrocommunity.colorscheme.kanagawa-nvim" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.cmake" },
 --  { import = "astrocommunity.pack.proto" },
   { import = "astrocommunity.pack.rust" },
-  { import = "astrocommunity.pack.java" },
-  { import = "astrocommunity.pack.kotlin" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.lua" },
 }
