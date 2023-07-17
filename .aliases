@@ -4,6 +4,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias cdp="cd ~/Projects"
+alias cdt="cd ~/Temp"
 
 alias mv="mv -v"
 alias rm="rm -i -v"
