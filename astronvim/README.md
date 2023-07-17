@@ -34,3 +34,17 @@ git clone --depth 1 https://github.com/TransientTetra/astronvim_user_config.git 
 ```shell
 nvim
 ```
+
+#### Todo
+- Add DAP virtual text (i.e. variable values when debugging)
+- Transparency
+- Add mappings - f+g, find in current buffer for Telescope; change session mappings
+- Icons - red x in tabs; DAP breakpoint icons
+- Show hidden items in neotree and Telescope
+- Rounded borders for lazy, mason and which key
+- Sessions - no auto create and auto open for cwd 
+- Mason and lazy icons
+- Dashboard
+- Tab width deduction
+- Fix cmake-tools - not working currently
+- Git blame for whole file
