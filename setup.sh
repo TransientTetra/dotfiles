@@ -18,6 +18,7 @@ gdb
 gettext
 git
 grep
+htop
 ripgrep
 gzip
 libssl-dev
