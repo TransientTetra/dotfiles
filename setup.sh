@@ -7,6 +7,7 @@ clang
 clangd
 cmus
 coreutils
+curl
 fdisk
 ffmpeg
 ftp
@@ -50,7 +51,9 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 "
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y $LIST_OF_APPS
+for i in $LIST_OF_APPS; do
+  sudo apt install -y $i
+done
 
 USER_=$(id -u -n)
 NPROC=$(nproc)

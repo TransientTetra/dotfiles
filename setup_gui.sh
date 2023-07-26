@@ -19,7 +19,9 @@ swaybg
 j4-dmenu-desktop
 "
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y $LIST_OF_APPS
+for i in $LIST_OF_APPS; do
+  sudo apt install -y $i
+done
 
 mkdir -p ~/.local/share/fonts
 mkdir -p ~/Temp
