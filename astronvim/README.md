@@ -43,7 +43,6 @@ nvim
 - Rounded borders for lazy, mason and which key
 - Sessions - no auto create and auto open for cwd 
 - Mason and lazy icons
-- Dashboard
 - Tab width deduction
 - Fix cmake-tools - not working currently
 - Git blame for whole file
