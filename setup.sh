@@ -88,7 +88,8 @@ rm -rf ~/.aliases
 rm -rf ~/.config/nvim
 ln -s ~/Projects/dotfiles/.vimrc ~/.vimrc
 ln -s ~/Projects/dotfiles/.zshrc ~/.zshrc
-ln -s ~/Projects/dotfiles/.gitconfig ~/.gitconfig
+# we want to copy gitconfig to allow git credential configuration on the machine without introducing changes to repo as it would with ln
+cp ~/Projects/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/Projects/dotfiles/.aliases ~/.aliases
 # ln -s ~/Projects/dotfiles/nvim ~/.config/nvim
 
