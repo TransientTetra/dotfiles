@@ -40,7 +40,6 @@ nvim
 - Transparency
 - Add mappings - f+g, find in current buffer for Telescope; change session mappings
 - Icons - red x in tabs; DAP breakpoint icons
-- Hide gitignored files in telescope
 - Rounded borders for lazy, mason and which key
 - Sessions - no auto create and auto open for cwd 
 - Mason and lazy icons

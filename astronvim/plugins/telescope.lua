@@ -6,5 +6,8 @@ return {
         hidden = true,
       },
     },
+    defaults = {
+      file_ignore_patterns = { ".git/" },
+    },
   },
 }
