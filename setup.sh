@@ -2,7 +2,6 @@
 
 LIST_OF_APPS="
 bash
-cargo
 clang
 clangd
 cmus
@@ -34,7 +33,6 @@ python3-pip
 python3-venv
 python3-virtualenv
 rsync
-rust-all
 samba
 smbclient
 tmux
@@ -92,6 +90,9 @@ ln -s ~/Projects/dotfiles/.zshrc ~/.zshrc
 cp ~/Projects/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/Projects/dotfiles/.aliases ~/.aliases
 # ln -s ~/Projects/dotfiles/nvim ~/.config/nvim
+
+# Rust
+curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # AstroNvim
 git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/AstroNvim/AstroNvim ~/.config/nvim
