@@ -46,4 +46,3 @@ nvim
 - Tab width deduction
 - Git blame for whole file
 - Autosave
-- Fix encoding error for clangd (previous implementation borked dap keymaps, commented out)
