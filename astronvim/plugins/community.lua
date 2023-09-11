@@ -11,8 +11,9 @@ return {
   { import = "astrocommunity.colorscheme.onedarkpro-nvim" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.cmake" },
---  { import = "astrocommunity.pack.proto" },
+  --  { import = "astrocommunity.pack.proto" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.color.transparent-nvim" },
 }
