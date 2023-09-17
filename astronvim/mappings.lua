@@ -24,8 +24,7 @@ return {
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     ["<leader>]"] = { "<cmd>bnext<cr>", desc = "Next tab" },
     ["<leader>["] = { "<cmd>bprev<cr>", desc = "Previous tab" },
-    ["<C-_>"] = { "gcc", desc = "Toggle line comment", remap = true },
-    ["<leader>/"] = { "gcc", desc = "Toggle line comment", remap = true },
+    ["<C-/>"] = { "gcc", desc = "Toggle line comment", remap = true },
 
     ["<leader>B"] = { name = "󱌣 Build" },
     ["<C-b>"] = { "<cmd>CMakeBuild all<cr>", desc = "Build all" },
@@ -57,8 +56,7 @@ return {
     -- ["<esc>"] = false,
   },
   v = {
-    ["<C-_>"] = { "gc", desc = "Toggle line comment", remap = true },
-    ["<leader>/"] = { "gc", desc = "Toggle line comment", remap = true },
+    ["<C-/>"] = { "gc", desc = "Toggle line comment", remap = true },
   },
   i = {
     ["<C-h>"] = { "<left>", desc = "Move cursor left" },
