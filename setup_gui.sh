@@ -10,6 +10,7 @@ thunderbird
 telegram-desktop
 kitty
 lutris
+meld
 shotwell
 vlc
 vorta
