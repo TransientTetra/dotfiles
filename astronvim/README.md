@@ -1,6 +1,8 @@
-# AstroNvim User Configuration Example
+# AstroNvim Template
 
-A user configuration template for [AstroNvim](https://github.com/AstroNvim/AstroNvim)
+**NOTE:** This is for AstroNvim v4+
+
+A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
 
 ## 🛠️ Installation
 
@@ -9,12 +11,8 @@ A user configuration template for [AstroNvim](https://github.com/AstroNvim/Astro
 ```shell
 mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak
-```
-
-#### Clone AstroNvim
-
-```shell
-git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+mv ~/.local/state/nvim ~/.local/state/nvim.bak
+mv ~/.cache/nvim ~/.cache/nvim.bak
 ```
 
 #### Create a new user repository from this template
@@ -26,7 +24,7 @@ You can also just clone this repository directly if you do not want to track you
 #### Clone the repository
 
 ```shell
-git clone --depth 1 https://github.com/TransientTetra/astronvim_user_config.git ~/.config/nvim/lua/user
+git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
 ```
 
 #### Start Neovim
@@ -34,15 +32,3 @@ git clone --depth 1 https://github.com/TransientTetra/astronvim_user_config.git 
 ```shell
 nvim
 ```
-
-#### Todo
-- Add DAP virtual text (i.e. variable values when debugging)
-- Transparency
-- Add mappings - f+g, find in current buffer for Telescope; u+r for relative toggle
-- Icons - red x in tabs; DAP breakpoint icon color
-- Rounded borders for lazy, mason and which key
-- Sessions - no auto create and auto open for cwd 
-- Mason and lazy icons
-- Tab width deduction
-- Git blame for whole file
-- Autosave

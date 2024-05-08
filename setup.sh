@@ -95,7 +95,6 @@ ln -s ~/Projects/dotfiles/.aliases ~/.aliases
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # AstroNvim
-git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-ln -s ~/Projects/dotfiles/astronvim/ ~/.config/nvim/lua/user
+ln -s ~/Projects/dotfiles/astronvim/ ~/.config/nvim
 nvim --headless -c 'quitall'
 
