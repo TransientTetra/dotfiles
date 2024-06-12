@@ -31,3 +31,5 @@ alias diff=gf
 alias gl="git log"
 alias lg=gl
 alias log=gl
+
+alias update="sudo apt update && sudo apt upgrade -y"
